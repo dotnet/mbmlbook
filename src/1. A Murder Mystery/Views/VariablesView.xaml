@@ -1,0 +1,269 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="MurderMystery.VariablesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Microsoft.Research.Glo.Views;assembly=Microsoft.Research.Glo"
+    xmlns:mm="clr-namespace:MurderMystery"
+    DataContextChanged="VariablesViewOnDataContextChanged"
+    x:Name="This"
+    mc:Ignorable="d" FontSize="24"
+     FontFamily="Calibri" d:DataContext="{mm:VariablesViewModel}">
+    <UserControl.Resources>
+        <BitmapImage x:Key="Dagger" UriSource="/MurderMystery;component/Images/dagger.png" />
+        <BitmapImage x:Key="Revolver" UriSource="/MurderMystery;component/Images/revolver.png" />
+        <Style TargetType="Image" x:Key="WeaponStyle">
+            <Style.Setters>
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+            </Style.Setters>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="Inside">
+            <Style.Setters>
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style.Setters>
+        </Style>
+        <Style TargetType="TextBox" x:Key="Outside">
+            <Style.Setters>
+                <Setter Property="Foreground" Value="#666666" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Margin" Value="2" />
+            </Style.Setters>
+        </Style>
+        <Style TargetType="views:Arrow" x:Key="ArrowStyle">
+            <Setter Property="Stroke" Value="#666666" />
+            <Setter Property="StrokeThickness" Value="2" />
+            <Setter Property="IsEndArrow" Value="True" />
+            <Setter Property="IsStartArrow" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="ArrowLength" Value="5" />
+            <Setter Property="ArrowWidth" Value="5" />
+        </Style>
+        <Style TargetType="views:Arrow" x:Key="HorizontalArrow" BasedOn="{StaticResource ArrowStyle}">
+            <Style.Setters>
+                <Setter Property="X1" Value="1" />
+                <Setter Property="Y1" Value="5" />
+                <Setter Property="Y2" Value="5" />
+            </Style.Setters>
+        </Style>
+        <Style TargetType="views:Arrow" x:Key="VerticalArrow" BasedOn="{StaticResource ArrowStyle}">
+            <Style.Setters>
+                <Setter Property="Y1" Value="1" />
+                <Setter Property="X1" Value="5" />
+                <Setter Property="X2" Value="5" />
+            </Style.Setters>
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+        <mm:WidthToThicknessConverter x:Key="WidthToThicknessConverter" />
+    </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <!--Murderer Only view (Priors/Posteriors)-->
+            <Grid Grid.Row="0" Grid.Column="0" Margin="0,0,2,0" Visibility="{Binding MurdererOnlyVisibility}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="2" Background="Gray"
+                    Width="{Binding GreyWidth}" 
+                    Height="{Binding SquareHeight}"
+                    ToolTip="{Binding GreyTooltip}">
+                    <Image Source="{StaticResource Revolver}" Style="{StaticResource WeaponStyle}" Visibility="{Binding WeaponVisibility}" />
+                    <TextBlock Style="{StaticResource Inside}" Text="{Binding GreyTotalText}"/>
+                </Grid>
+                <!-- Text to left of Grey -->
+                <Border Name="XAxisLabel1" BorderThickness="0" Grid.Row="0" Grid.Column="0" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <TextBlock Text="Weapon" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding WeaponVisibility}">
+                        <TextBlock.LayoutTransform>
+                            <RotateTransform Angle="-90" />
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </Border>
+                <Grid Grid.Row="0" Grid.Column="1" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource VerticalArrow}" Y2="{Binding GreyRevolverHeight}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding TotalText, Mode=OneWay}" />
+                </Grid>
+                <!-- Text under Grey -->
+                <Grid Grid.Row="1" Grid.Column="2" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource HorizontalArrow}" X2="{Binding GreyWidth}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding GreyTotalText, Mode=OneWay}" />
+                </Grid>
+            </Grid>
+            <!--Joint/Conditional view-->
+            <Grid Grid.Row="0" Grid.Column="0" Visibility="{Binding GreyVisibility}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <!--Joint/Conditional view (Grey, Revolver)-->
+                <Grid Grid.Row="0" Grid.Column="2" Background="Gray" Margin="0,0,4,4"
+                        Width="{Binding GreyRevolverWidth}" 
+                        Height="{Binding GreyRevolverHeight}"
+                        ToolTip="{Binding GreyRevolverTooltip}"
+                        ToolTipService.IsEnabled="{Binding GreyRevolverTooltipEnabled}">
+                    <Image Source="{StaticResource Revolver}" Style="{StaticResource WeaponStyle}" />
+                    <TextBlock Style="{StaticResource Inside}" Text="{Binding GreyRevolverText}"/>
+                </Grid>
+                <!--Joint/Conditional view (Grey, Dagger)-->
+                <Grid Grid.Row="1" Grid.Column="2" Background="Gray" Margin="0,0,4,0"
+                        Opacity="{Binding DaggerOpacity}"
+                        Width="{Binding GreyDaggerWidth}" 
+                        Height="{Binding GreyDaggerHeight}"
+                        ToolTip="{Binding GreyDaggerTooltip}"
+                        ToolTipService.IsEnabled="{Binding GreyDaggerTooltipEnabled}">
+                    <Image Source="{StaticResource Dagger}" Style="{StaticResource WeaponStyle}" />
+                    <TextBlock Style="{StaticResource Inside}" Text="{Binding GreyDaggerText}"/>
+                </Grid>
+                <!-- Text to left of Grey -->
+                <Border Name="XAxisLabel2" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <TextBlock Text="Weapon" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding WeaponVisibility}">
+                        <TextBlock.LayoutTransform>
+                            <RotateTransform Angle="-90" />
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </Border>
+                <Grid Grid.Row="0" Grid.Column="1" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource VerticalArrow}" Y2="{Binding GreyRevolverHeight}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding GreyRevolverMarginalText, Mode=OneWay}" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource VerticalArrow}" Y2="{Binding GreyDaggerHeight}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding GreyDaggerMarginalText, Mode=OneWay}" />
+                </Grid>
+                <!-- Text under Grey -->
+                <Grid Grid.Row="2" Grid.Column="2" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource HorizontalArrow}" X2="{Binding GreyWidth}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding GreyTotalText, Mode=OneWay}" />
+                </Grid>
+            </Grid>
+            <!-- Vertical white stripe in between columns -->
+            <Canvas Grid.Row="0" Grid.Column="1" Background="Transparent" Height="{Binding SquareHeight}" Width="{Binding ColumnGap}" 
+                Visibility="{Binding WhiteStripeVisibility}" />
+            <!--Murderer Only View (Priors/Posteriors)-->
+            <Grid Grid.Row="0" Grid.Column="2" Margin="2,0,0,0" Visibility="{Binding MurdererOnlyVisibility}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0" Background="DarkRed"
+                        Width="{Binding AuburnWidth}" 
+                        Height="{Binding SquareHeight}"
+                        ToolTip="{Binding AuburnTooltip}">
+                    <Image Source="{StaticResource Revolver}" Style="{StaticResource WeaponStyle}" Visibility="{Binding WeaponVisibility}" />
+                    <TextBlock Style="{StaticResource Inside}" Text="{Binding AuburnTotalText}"/>
+                </Grid>
+                <!-- Text to right of Auburn -->
+                <Grid Grid.Row="0" Grid.Column="1" Visibility="{Binding ElementName=This, Path=TextRightVisibility}">
+                    <views:Arrow Style="{StaticResource VerticalArrow}" Y2="{Binding SquareHeight}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding TotalText, Mode=OneWay}" />
+                </Grid>
+                <!-- Text under Auburn -->
+                <Grid Grid.Row="1" Grid.Column="0" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource HorizontalArrow}" X2="{Binding AuburnWidth}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding AuburnTotalText, Mode=OneWay}" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="2" Visibility="{Binding AuburnVisibility}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <!--Joint/Conditional view (Auburn, Revolver)-->
+                <Grid Grid.Row="0" Grid.Column="{Binding AuburnColumn}" Background="DarkRed"
+                        Width="{Binding AuburnRevolverWidth}" 
+                        Height="{Binding AuburnRevolverHeight}"
+                        ToolTip="{Binding AuburnRevolverTooltip}"
+                        ToolTipService.IsEnabled="{Binding AuburnRevolverTooltipEnabled}">
+                    <Image Source="{StaticResource Revolver}" Style="{StaticResource WeaponStyle}" />
+                    <TextBlock Style="{StaticResource Inside}" Text="{Binding AuburnRevolverText}"/>
+                </Grid>
+                <!--Joint/Conditional view (Auburn, Dagger)-->
+                <Grid Grid.Row="1" Grid.Column="{Binding AuburnColumn}" Margin="0,4,0,0" Background="DarkRed"
+                        Opacity="{Binding DaggerOpacity}"
+                        Width="{Binding AuburnDaggerWidth}" 
+                        Height="{Binding AuburnDaggerHeight}"
+                        ToolTip="{Binding AuburnDaggerTooltip}"
+                        ToolTipService.IsEnabled="{Binding AuburnDaggerTooltipEnabled}">
+                    <Image Source="{StaticResource Dagger}" Style="{StaticResource WeaponStyle}" />
+                    <TextBlock Style="{StaticResource Inside}" Text="{Binding AuburnDaggerText}"/>
+                </Grid>
+                <!-- Text to left of Auburn -->
+                <Border BorderThickness="0" Grid.Row="0" Grid.RowSpan="2" Grid.Column="{Binding AuburnAxisLabelColumn}" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <TextBlock Text="Weapon" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ConditionalsVisibility}">
+                        <TextBlock.LayoutTransform>
+                            <RotateTransform Angle="-90" />
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </Border>
+                <Grid Grid.Row="0" Grid.Column="{Binding AuburnTextColumn}" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource VerticalArrow}" Y2="{Binding AuburnRevolverHeight}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding AuburnRevolverMarginalText, Mode=OneWay}" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="{Binding AuburnTextColumn}" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource VerticalArrow}" Y2="{Binding AuburnDaggerHeight}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding AuburnDaggerMarginalText, Mode=OneWay}" />
+                </Grid>
+                <!--Text under auburn-->
+                <Grid Grid.Row="2" Grid.Column="{Binding AuburnColumn}" Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                    <views:Arrow Style="{StaticResource HorizontalArrow}" X2="{Binding AuburnWidth}" />
+                    <TextBox Style="{StaticResource Outside}" Text="{Binding AuburnTotalText, Mode=OneWay}" />
+                </Grid>
+            </Grid>
+            <!-- Text under both columns. Don't show in Conditionals View -->
+            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                    Visibility="{Binding ElementName=This, Path=ShowArrows, Converter={StaticResource BoolToVisConverter}}">
+                <Border.Margin>
+                    <MultiBinding Converter="{StaticResource WidthToThicknessConverter}">
+                        <Binding ElementName="XAxisLabel1" Path="ActualWidth" />
+                        <Binding ElementName="XAxisLabel2" Path="ActualWidth" />
+                    </MultiBinding>
+                </Border.Margin>
+                <TextBlock Text="Murderer" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding NotConditionalsVisibility}" />
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
