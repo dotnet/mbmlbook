@@ -1,0 +1,110 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="AssessingPeoplesSkills.Views.ExperimentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:inferglo="clr-namespace:MBMLViews.Views;assembly=MBMLViews"
+    xmlns:glo="clr-namespace:Microsoft.Research.Glo.Views;assembly=Microsoft.Research.Glo"
+    xmlns:debug="clr-namespace:System.Diagnostics;assembly=System"
+    xmlns:converters="clr-namespace:MBMLViews.Converters;assembly=MBMLViews"
+    DataContextChanged="UserControlDataContextChanged"
+    x:Name="This"
+    Margin="3"
+    >
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="2">
+        <Grid x:Name="MyGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <inferglo:MatrixCanvasView x:Name="SkillsForQuestionsView" Grid.Row="0" Grid.Column="0" 
+                                       VerticalAlignment="Bottom"
+                                       DataContext="{Binding Path=Inputs.Quiz.SkillsQuestionsMask}"
+                                       ColorMap="{Binding ElementName=This, Path=ColorMap}"
+                                       ShowTickMarks="False"
+                                       ShowColorBar="False"
+                                       ShowCellText="{Binding ElementName=This, Path=ShowCellText}"
+                                       ShowToolTips="{Binding ElementName=This, Path=ShowToolTips}"
+                                       CellBorderThickness="{Binding ElementName=This, Path=CellBorderThickness}"
+                                       GridCellSize="{Binding ElementName=This, Path=GridCellSize}"
+                                       Visibility="{Binding Converter={converters:IsNullToVisibilityConverter} }"
+                                       Title="Skills for Questions" YMin="0.0" YMax="1.0" />
+            <inferglo:MatrixCanvasView x:Name="IsCorrectView" Grid.Row="1" Grid.Column="0" 
+                                       DataContext="{Binding Path=Inputs.IsCorrect}" 
+                                       ShowTickMarks="False"
+                                       ColorMap="{Binding ElementName=This, Path=ColorMap}"
+                                       ShowColorBar="{Binding ElementName=This, Path=ShowColorBar}"
+                                       ShowCellText="{Binding ElementName=This, Path=ShowCellText}"
+                                       ShowToolTips="{Binding ElementName=This, Path=ShowToolTips}"
+                                       CellBorderThickness="{Binding ElementName=This, Path=CellBorderThickness}"
+                                       GridCellSize="{Binding ElementName=This, Path=GridCellSize}"
+                                       Visibility="{Binding Converter={converters:IsNullToVisibilityConverter} }"
+                                       Title="Is Correct" YMin="0.0" YMax="1.0" DeriveRangeFromData="False"  />
+            <inferglo:MatrixCanvasView x:Name="StatedSkillsView" Grid.Row="1" Grid.Column="1" Margin="10,0,0,0"
+                                       DataContext="{Binding Path=Inputs.StatedSkills}" 
+                                       ColorMap="{Binding ElementName=This, Path=ColorMap}"
+                                       ShowTickMarks="False"
+                                       ShowColorBar="False"
+                                       ShowCellText="{Binding ElementName=This, Path=ShowCellText}"
+                                       ShowToolTips="{Binding ElementName=This, Path=ShowToolTips}"
+                                       CellBorderThickness="{Binding ElementName=This, Path=CellBorderThickness}"
+                                       GridCellSize="{Binding ElementName=This, Path=GridCellSize}"
+                                       Visibility="{Binding Converter={converters:IsNullToVisibilityConverter}}"
+                                       Title="Stated Skills" YMin="0.0" YMax="1.0" DeriveRangeFromData="False" />
+            <inferglo:MatrixCanvasView x:Name="SkillsPosteriorMeansView" Grid.Row="1" Grid.Column="2" 
+                                       DataContext="{Binding Path=Results.SkillsPosteriorMeans}" 
+                                       ColorMap="{Binding ElementName=This, Path=ColorMap}"
+                                       ShowTickMarks="False"
+                                       ShowColorBar="False"
+                                       ShowCellText="{Binding ElementName=This, Path=ShowCellText}"
+                                       ShowToolTips="{Binding ElementName=This, Path=ShowToolTips}"
+                                       CellBorderThickness="{Binding ElementName=This, Path=CellBorderThickness}"
+                                       GridCellSize="{Binding ElementName=This, Path=GridCellSize}"
+                                       Visibility="{Binding Converter={converters:IsNullToVisibilityConverter}}"
+                                       Title="Skills Posterior Means" YMin="0.0" YMax="1.0" DeriveRangeFromData="False" />
+            <inferglo:MatrixCanvasView x:Name="GuessPosteriorMeansView" Grid.Row="2" Grid.Column="0" 
+                                       DataContext="{Binding Converter={converters:ArrayToJaggedConverter}, Path=Results.GuessPosteriorMeans}" 
+                                       Visibility="{Binding Converter={converters:IsNullToVisibilityConverter}}"
+                                       ColorMap="{Binding ElementName=This, Path=ColorMap}"
+                                       ShowTickMarks="False"
+                                       ShowColorBar="False"
+                                       ShowCellText="{Binding ElementName=This, Path=ShowCellText}"
+                                       ShowToolTips="{Binding ElementName=This, Path=ShowToolTips}"
+                                       CellBorderThickness="{Binding ElementName=This, Path=CellBorderThickness}"
+                                       GridCellSize="{Binding ElementName=This, Path=GridCellSize}"
+                                       Margin="0,10,0,0" Title="Probability of Guess Posterior Means" YMin="0.0" YMax="1.0" DeriveRangeFromData="False" />
+            <inferglo:MatrixCanvasView x:Name="NotMistakePosteriorMeansView" Grid.Row="3" Grid.Column="0" 
+                                       DataContext="{Binding Converter={converters:ArrayToJaggedConverter}, Path=Results.NotMistakePosteriorMeans}" 
+                                       ColorMap="{Binding ElementName=This, Path=ColorMap}"
+                                       Visibility="{Binding Converter={converters:IsNullToVisibilityConverter}}"
+                                       ShowTickMarks="False"
+                                       ShowCellText="{Binding ElementName=This, Path=ShowCellText}"
+                                       ShowColorBar="False"
+                                       ShowToolTips="{Binding ElementName=This, Path=ShowToolTips}"
+                                       CellBorderThickness="{Binding ElementName=This, Path=CellBorderThickness}"
+                                       GridCellSize="{Binding ElementName=This, Path=GridCellSize}"
+                                       Margin="0,10,0,0" Title="Probability of Not Mistake Posterior Means" YMin="0.0" YMax="1.0" DeriveRangeFromData="False" />
+
+            <glo:WpfChartView Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" x:Name="MsePerSkill" 
+                           DataContext="{Binding Path=Metrics.SkillsMeanSquaredErrorPerSkill.Values}" Title="Mean Squared Error per Skill" YAxisLabel="Error" XAxisLabel="Skills"
+                           Visibility="{Binding Converter={converters:IsNullToVisibilityConverter}}"
+                           />
+            <glo:WpfChartView Grid.Row="1" Grid.Column="3" x:Name="MsePerPerson"
+                           DataContext="{Binding Path=Metrics.SkillsMeanSquaredErrorPerPerson}" Title="Mean Squared Error per Person" YAxisLabel="Error" XAxisLabel="People"
+                           Visibility="{Binding Converter={converters:IsNullToVisibilityConverter}}">
+                <glo:WpfChartView.LayoutTransform>
+                    <RotateTransform Angle="90" />
+                </glo:WpfChartView.LayoutTransform>
+            </glo:WpfChartView>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,29 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="AssessingPeoplesSkills.Views.GaussianDemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:glo="clr-namespace:Microsoft.Research.Glo.Views;assembly=Microsoft.Research.Glo"
+    xmlns:debug="clr-namespace:System.Diagnostics;assembly=System"
+    DataContextChanged="UserControlDataContextChanged"
+    x:Name="This"
+    >
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="2">
+        <Grid Background="{Binding ElementName=This, Path=BackgroundColor}">
+            <glo:WpfChartView Name="LineChart" ShowYGridlines="True" ShowXGridlines="False" Title="" ChartType="Line" LineMarker="None" 
+                              ShowLegend="No" YAxisLabel="Probability Density" XAxisLabel="Height (m)" MaxNumberOfDataPoints="2000"
+                              XMinimum="{Binding ElementName=This, Path=XMinimum}"
+                              XMaximum="{Binding ElementName=This, Path=XMaximum}"
+                              YMinimum="0.0"
+                              DataContext="{Binding ElementName=This, Path=LinePoints}"
+                              />
+            <glo:WpfChartView Name="AreaChart" ShowYGridlines="False" ShowXGridlines="False" Title="" ChartType="Area" LineMarker="None" 
+                              ShowLegend="No" YAxisLabel="" XAxisLabel="" MaxNumberOfDataPoints="2000"
+                              YMinimum="0.0"
+                              Opacity="0.3"
+                              DataContext="{Binding ElementName=This, Path=AreaPoints}"
+                              />
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,55 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="MBMLViews.Views.FunctionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:glo="clr-namespace:Microsoft.Research.Glo.Views;assembly=Microsoft.Research.Glo"
+             xmlns:debug="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+             x:Name="This"
+             DataContextChanged="UserControlDataContextChanged"
+             >
+    <Grid>
+        <glo:WpfChartView Name="MyChart"
+                   Title="{Binding ElementName=This, Path=Title}"
+                   ChartType="ScatterLine" 
+                   XAxisLabel="x"
+                   YAxisLabel="f(x)"
+                   LineMarker="None"
+                   ShowLegend="{Binding ElementName=This, Path=ShowLegend}"
+                   LegendPosition="{Binding ElementName=This, Path=LegendPosition}"
+                   ShowXGridlines="False"
+                   ShowYGridlines="False"
+                   XMinimum="{Binding ElementName=This, Path=XMinimum}"
+                   XMaximum="{Binding ElementName=This, Path=XMaximum}"
+                   YMinimum="{Binding ElementName=This, Path=YMinimum}"
+                   YMaximum="{Binding ElementName=This, Path=YMaximum}"
+                   Zoom="{Binding ElementName=This, Path=Zoom}"
+                   debug:PresentationTraceSources.TraceLevel="High" />
+        <StackPanel Orientation="Horizontal">
+        <!--<TextBlock Name="CellText" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Width="Auto" />-->
+            <StackPanel Orientation="Vertical" Visibility="Collapsed" Name="CellLegend" VerticalAlignment="Center" />
+            <glo:WpfChartView Name="MyCellChart"
+                           Title=""
+                           ShowXGridlines="False"
+                           ShowYGridlines="False"
+                           ChartType="ScatterLine"
+                           ShowXAxis="False"
+                           ShowYAxis="False"
+                           ShowLegend="No"
+                           LineMarker="None"
+                           Margin="10,0,0,0"
+                           XMinimum="{Binding ElementName=This, Path=XMinimum}"
+                           XMaximum="{Binding ElementName=This, Path=XMaximum}"
+                           YMinimum="{Binding ElementName=This, Path=YMinimum}"
+                           YMaximum="{Binding ElementName=This, Path=YMaximum}"
+                           Visibility="Collapsed"
+                           VerticalAlignment="Center"
+                           >
+                <glo:WpfChartView.LayoutTransform>
+                    <ScaleTransform ScaleX="0.2" ScaleY="0.2" CenterX="0" CenterY="0" />
+                </glo:WpfChartView.LayoutTransform>
+            </glo:WpfChartView>
+        </StackPanel>
+    </Grid>
+</UserControl>

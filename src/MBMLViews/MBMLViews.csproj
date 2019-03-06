@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>MBMLViews</RootNamespace>
+    <AssemblyName>MBMLViews</AssemblyName>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyTitle>MBMLViews</AssemblyTitle>
+    <Company>Microsoft Research LTD</Company>
+    <Product>MBMLViews</Product>
+    <Copyright>Copyright © Microsoft Research LTD 2018</Copyright>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LanguageTargets Condition="Exists('$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets')">$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets</LanguageTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ML.Probabilistic" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.ML.Probabilistic.Compiler" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.Research.Glo" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Research.GloObject" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Properties\Resources.Designer.cs" />
+    <Compile Remove="Properties\Settings.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- XAML elements -->
+    <!-- Workaround to make xamls appear in the VS solution explorer -->
+    <None Include="**\*.xaml" />
+    <Page Include="**\*.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <ProjectReference Include="..\MBMLCommon\MBMLCommon.csproj" />
+    <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
+    <DefineConstants>$(DefineConstants);NETFULL</DefineConstants>
+  </PropertyGroup>
+
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+		<DefineConstants>$(DefineConstants);NETSTANDARD;NETCORE</DefineConstants>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ML.Probabilistic" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.Research.GloObject" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(DefineConstants.Contains('NETFULL'))">
+    <PackageReference Include="Microsoft.Research.Glo" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
