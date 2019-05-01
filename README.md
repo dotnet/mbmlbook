@@ -2,9 +2,9 @@
 
 Supporting code for the [Model-Based Machine Learning](http://mbmlbook.com/) book.
 
-This project contains the sample code and test data for the freely available online book on model-based machine learning published at http://mbmlbook.com/. The book aims at educating readers how to build machine learning models for real-world problems. Each chapter tackles one such scenario by defining a statistical model and demonstrating how to apply it to actual data. This repository contains the source code for these models together with the sample data, so that readers can run it on their own, re-create the results from the book and experiment with modifying the code.
+This project contains the sample code and test data for the freely-available book on model-based machine learning at http://mbmlbook.com/. The book introduces readers to how to build machine learning models for real-world problems. Each chapter tackles a different problem by defining a statistical model and demonstrating how to apply it to actual data. This repository contains the source code for these models together with the sample data - so that readers can run it on their own, re-create the results from the book and experiment with modifying the code.
 
-Models here are created and inferred on using the [Infer.NET](https://github.com/dotnet/infer) framework.
+Models here are created and applied using the [Infer.NET](https://github.com/dotnet/infer) framework.
 When targeting .NET Framework/Windows code produces visualizations using [Glo](GLO.md).
 
 ## Contents
@@ -29,8 +29,10 @@ When targeting .NET Framework/Windows code produces visualizations using [Glo](G
         * Views - additional [Glo](GLO.md) views needed for specific chapter. Not included in compilation when targeting .Net Core.
         * Contents.cs - static type that has constants for the name of the chapter and all the sections within the chapter
         * Program.cs
+	* 3\. Meeting Your Match
+		* Similar layout to chapter 2.
     * MBMLCommon/ - a number of utility classes shared by different projects including
-        * Outputter.cs - class that encapsulates outputting objects, so that the code for chapters could do it in a platform-agnostic way. Also exposes methods for saving outputs into .objml files. Outputting text should be done with `Console.WriteLine()` for the sake of simplicity.
+        * Outputter.cs - class that encapsulates outputting objects, so that the code for chapters can output results in a platform-agnostic way. Also exposes methods for saving outputs to .objml files. 
     * MBMLViews - additional [Glo](GLO.md) views shared among the chapters.
 * test/ - projects with unit tests
 
