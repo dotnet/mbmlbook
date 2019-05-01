@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AssessingPeoplesSkills
 {
-    static class Contents
+    public static class Contents
     {
         public const string ChapterName = "Assessing People's Skills";
         public static class S0AssessingPeoplesSkills

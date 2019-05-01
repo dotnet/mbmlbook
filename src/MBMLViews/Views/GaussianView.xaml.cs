@@ -24,30 +24,14 @@ namespace MBMLViews.Views
     using Microsoft.ML.Probabilistic;
     using Microsoft.ML.Probabilistic.Collections;
     using Microsoft.ML.Probabilistic.Distributions;
-
-    /// <summary>
-    /// The distribution type.
-    /// </summary>
-    public enum DistributionType
-    {
-        /// <summary>
-        /// The prior.
-        /// </summary>
-        Prior,
-
-        /// <summary>
-        /// The posterior.
-        /// </summary>
-        Posterior
-    }
-
+   
     /// <summary>
     /// Interaction logic for GaussianView
     /// </summary>
     [ViewInformation(TargetType = typeof(Gaussian), Priority = 12, MinimumSize = ViewSize.Cell)]
     [ViewInformation(TargetType = typeof(IEnumerable<Gaussian>), Priority = 12, MinimumSize = ViewSize.Cell)]
     [ViewInformation(TargetType = typeof(IEnumerable<KeyValuePair<string, Gaussian>>), Priority = 12, MinimumSize = ViewSize.Cell)]
-    [ViewInformation(TargetType = typeof(Dictionary<string, Dictionary<DistributionType, Gaussian>>), Priority = 12, MinimumSize = ViewSize.SmallPanel)]
+    [ViewInformation(TargetType = typeof(Dictionary<string, Dictionary<MBMLCommon.DistributionType, Gaussian>>), Priority = 12, MinimumSize = ViewSize.SmallPanel)]
     public partial class GaussianView : IConstrainableView, INotifyPropertyChanged
     {
         /// <summary>
@@ -828,7 +812,7 @@ namespace MBMLViews.Views
                     }
                     else
                     {
-                        var dictOfDicts = DataContext as Dictionary<string, Dictionary<DistributionType, Gaussian>>;
+                        var dictOfDicts = DataContext as Dictionary<string, Dictionary<MBMLCommon.DistributionType, Gaussian>>;
                         int i = 0;
                         if (dictOfDicts != null)
                         {

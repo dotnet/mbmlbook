@@ -19,35 +19,12 @@ namespace AssessingPeoplesSkills
         /// </summary>
         public static void Main(string[] args)
         {
-            var engine = new InferenceEngine();
-
             InitializeUI();
-            Outputter outputter = new Outputter(Contents.ChapterName);
+            Outputter outputter = Outputter.GetOutputter(Contents.ChapterName);
 
             try
             {
-                ModelRunner runner = new ModelRunner(outputter);
-
-                Console.WriteLine($"\n{Contents.S2TestingOutTheModel.NumberedName}.\n");
-                runner.ToyWith3QuestionsAnd2Skills();
-                Console.WriteLine($"\n{Contents.S3Loopiness.NumberedName}.\n");
-                runner.LoopyExample();
-
-                // Inference on the real data. Sections 4-6.
-                runner.RealDataInference();
-
-                // PDF demo
-                Console.WriteLine("PDF demonstration");
-                runner.ProbabilityDensityFunctionDemo();
-
-                // Demo of Beta distribution
-                Console.WriteLine("Beta function demonstration");
-                runner.BetaDemo();
-
-                // For Beta self assessment
-                runner.BetaSelfAssessment();
-
-                Console.WriteLine("\nCompleted all experiments.");
+                RunExperiments(outputter);
             }
             catch (Exception e)
             {
@@ -62,6 +39,32 @@ namespace AssessingPeoplesSkills
                     Console.WriteLine("Done saving.");
                 }
             }
+        }
+
+        public static void RunExperiments(Outputter outputter)
+        {
+            ModelRunner runner = new ModelRunner(outputter);
+
+            Console.WriteLine($"\n{Contents.S2TestingOutTheModel.NumberedName}.\n");
+            runner.ToyWith3QuestionsAnd2Skills();
+            Console.WriteLine($"\n{Contents.S3Loopiness.NumberedName}.\n");
+            runner.LoopyExample();
+
+            // Inference on the real data. Sections 4-6.
+            runner.RealDataInference();
+
+            // PDF demo
+            Console.WriteLine("PDF demonstration");
+            runner.ProbabilityDensityFunctionDemo();
+
+            // Demo of Beta distribution
+            Console.WriteLine("Beta function demonstration");
+            runner.BetaDemo();
+
+            // For Beta self assessment
+            runner.BetaSelfAssessment();
+
+            Console.WriteLine("\nCompleted all experiments.");
         }
 
         private static void InitializeUI()

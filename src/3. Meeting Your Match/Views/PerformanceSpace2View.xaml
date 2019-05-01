@@ -1,0 +1,77 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="MeetingYourMatch.Views.PerformanceSpace2View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:MeetingYourMatch.Views"
+             xmlns:views1="clr-namespace:Microsoft.Research.Glo.Views;assembly=Microsoft.Research.Glo"
+             xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
+             xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=DotNetProjects.DataVisualization.Toolkit"
+             xmlns:glo="clr-namespace:Microsoft.Research.Glo;assembly=GloObject"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500"
+             x:Name="This"
+             DataContextChanged="PerformanceSpace2View_OnDataContextChanged"
+             Margin="3">
+    <UserControl.Resources>
+        <views:PointToScreenConverter x:Key="PointToScreenConverter" />
+        <Style TargetType="views1:Arrow" x:Key="ArrowStyle">
+            <Setter Property="Stroke" Value="#666666" />
+            <Setter Property="StrokeThickness" Value="2" />
+            <Setter Property="IsEndArrow" Value="True" />
+            <Setter Property="IsStartArrow" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="ArrowLength" Value="5" />
+            <Setter Property="ArrowWidth" Value="5" />
+        </Style>
+
+        <ControlTemplate TargetType="chartingToolkit:DataPoint" x:Key="DataPointTemplate">
+            <Canvas>
+                <Ellipse Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ToolTip="{TemplateBinding DependentValue, Converter={x:Static glo:ObjectToStringConverter.Instance}}"/>
+                <ContentPresenter Content="{Binding}" /> <!--ContentTemplate="{StaticResource BaseMarkerTemplate}" />-->
+            </Canvas>
+        </ControlTemplate>
+
+        <Style x:Key="BaseDataPointStyle" TargetType="chartingToolkit:DataPoint">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Width" Value="1" />
+            <Setter Property="Height" Value="1" />
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template" Value="{StaticResource DataPointTemplate}"/>
+        </Style>
+
+        <visualizationToolkit:ResourceDictionaryCollection x:Key="Palette">
+            <ResourceDictionary >
+                <Style x:Key="DataPointStyle" TargetType="chartingToolkit:DataPoint" BasedOn="{StaticResource BaseDataPointStyle}">
+                    <Setter Property="Background" Value="Black"/>
+                </Style>
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="chartingToolkit:DataPoint" BasedOn="{StaticResource BaseDataPointStyle}">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Style>
+            </ResourceDictionary>
+        </visualizationToolkit:ResourceDictionaryCollection>
+    </UserControl.Resources>
+    <Grid>
+        <views1:WpfChartView 
+            Name="MyChart" 
+            XAxisLabel="Fred's Performance" 
+            YAxisLabel="Jill's Performance" 
+            ShowXGridlines="False"
+            ShowYGridlines="False"
+            ShowAxisLines="True"
+            ChartType="Line"
+            LineMarker="Circle"
+            MarkerSize="0.1"
+            ShowLegend="No"
+            XMinimum="{Binding ElementName=This, Path=XMinimum}"
+            XMaximum="{Binding ElementName=This, Path=XMaximum}"
+        />
+    </Grid>
+</UserControl>

@@ -14,18 +14,34 @@ namespace MBMLCommon
     public class Outputter
     {
         public IDictionary<string, object> Output { get; }
+        public bool UsingGlo { get; }
 
         private readonly List<string[]> outputPaths;
 
-        public Outputter(string name)
+        public Outputter(string name, bool useGlo)
         {
             outputPaths = new List<string[]>();
+            UsingGlo = useGlo;
+            if (useGlo)
+            {
 #if NETFULL
-            GloBrowser.Start(name);
-            GloBrowser.Browser.GoToAddress("");
-            Output = GloBrowser.Browser.HomeObjects;
+                GloBrowser.Start(name);
+                GloBrowser.Browser.GoToAddress("");
+                Output = GloBrowser.Browser.HomeObjects;
 #else
-            Output = new Dictionary<string, object>();
+                throw new NotSupportedException("Glo is not supported on .NET Core.");
+#endif
+            }
+            else
+                Output = new Dictionary<string, object>();
+        }
+
+        public static Outputter GetOutputter(string name)
+        {
+#if NETFULL
+            return new Outputter(name, true);
+#else
+            return new Outputter(name, false);
 #endif
         }
 
@@ -81,9 +97,12 @@ namespace MBMLCommon
 
             outputPaths.Add(path);
 #if NETFULL
-            GloBrowser.Browser.RefreshAll();
+            if (UsingGlo)
+                GloBrowser.Browser.RefreshAll();
 #endif
         }
+
+        public object this[string[] path] => FindInNestedDictionaries(Output, path);
 
         /// <summary>
         /// Serializes an object from the Output dictionary that can be accessed as
@@ -95,35 +114,6 @@ namespace MBMLCommon
         public void SaveObject(string filePath, params string[] objectPath)
         {
             SaveObjectFromDictionary(filePath, Output, objectPath);
-        }
-
-        private static void SaveObjectFromDictionary(string filePath, IDictionary<string, object> dictionary, string[] objectPath)
-        {
-            if (string.IsNullOrEmpty(filePath))
-                throw new ArgumentNullException(nameof(filePath));
-
-            if (objectPath == null || objectPath.Length == 0)
-                throw new ArgumentNullException(nameof(objectPath));
-
-            if (dictionary == null)
-                throw new ArgumentNullException(nameof(dictionary));
-
-            IDictionary<string, object> cur = dictionary;
-            for (int i = 0; i < objectPath.Length - 1; ++i)
-            {
-                if (cur.ContainsKey(objectPath[i]) && cur[objectPath[i]] is IDictionary<string, object> next)
-                    cur = next;
-                else
-                    throw new ArgumentException("Object is not found.", nameof(objectPath));
-            }
-
-            string key = objectPath[objectPath.Length - 1];
-            if (cur.ContainsKey(key))
-            {
-                SerializationManager.Save(filePath, cur[key]);
-            }
-            else
-                throw new ArgumentException("Object is not found.", nameof(objectPath));
         }
 
         /// <summary>
@@ -203,6 +193,64 @@ namespace MBMLCommon
             SaveListFlattening(outputPaths, targetFolder);
         }
 
+        private static void SaveObjectFromDictionary(string filePath, IDictionary<string, object> dictionary, string[] objectPath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+                throw new ArgumentNullException(nameof(filePath));
+
+            if (objectPath == null || objectPath.Length == 0)
+                throw new ArgumentNullException(nameof(objectPath));
+
+            if (dictionary == null)
+                throw new ArgumentNullException(nameof(dictionary));
+
+            object target = FindInNestedDictionaries(dictionary, objectPath);
+
+            SerializationManager.Save(filePath, target);
+        }
+
+        private static object FindInNestedDictionaries(IDictionary<string, object> dictionary, string[] objectPath)
+        {
+            object cur = dictionary;
+            for (int i = 0; i < objectPath.Length; ++i)
+            {
+                if (TryNavigateIntoStringDictionary(cur, objectPath[i], out object next))
+                    cur = next;
+                else
+                    throw new ArgumentException("Object is not found.", nameof(objectPath));
+            }
+            return cur;
+        }
+
+        private static bool TryNavigateIntoStringDictionary(object possibleDictionary, string key, out object value)
+        {
+            // When dictionary is created by the outputter, it's a Dictionary<string, object>
+            if (possibleDictionary is IDictionary<string, object> dict)
+            {
+                return dict.TryGetValue(key, out value);
+            }
+            // In user-created dictionaries, 2nd type argument can be anything
+            var IDictType = possibleDictionary.GetType().GetInterfaces().FirstOrDefault(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IDictionary<,>));
+            if (IDictType == null || IDictType.GetGenericArguments()[0] != typeof(string))
+            {
+                value = null;
+                return false;
+            }
+            object[] parameters = new object[] { key, null };
+            var tryGetValueMethodInfo = IDictType.GetMethod("TryGetValue");
+            bool result = (bool)tryGetValueMethodInfo.Invoke(possibleDictionary, parameters);
+            if (result)
+            {
+                value = parameters[1];
+                return true;
+            }
+            else
+            {
+                value = null;
+                return false;
+            }
+        }
+
         private void SaveDictionaryPlain(IDictionary<string, object> dict, string pathPrefix)
         {
             foreach (KeyValuePair<string, object> kvp in dict)
@@ -259,6 +307,7 @@ namespace MBMLCommon
             foreach (string[] path in list)
             {
                 string filename = JoinPascalCase(path) + ".objml";
+                filename = string.Join(string.Empty, filename.Split(Path.GetInvalidFileNameChars()));
                 string filepath = Path.Combine(targetFolder, filename);
                 Console.WriteLine($"Saving {filepath}...");
                 SaveObject(filepath, path);

@@ -4,7 +4,7 @@
 
 namespace MurderMystery
 {
-    static class Contents
+    public static class Contents
     {
         public const string ChapterName = "A Murder Mystery";
         public static class S0AMurderMystery

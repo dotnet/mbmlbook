@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>MeetingYourMatch</RootNamespace>
+    <AssemblyName>MeetingYourMatch</AssemblyName>
+    <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
+    <AssemblyTitle>MeetingYourMatch</AssemblyTitle>
+    <Product>MeetingYourMatch</Product>
+    <Copyright>Copyright © Microsoft 2019</Copyright>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
+    <DefineConstants>$(DefineConstants);NETFULL</DefineConstants>
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1'">
+    <DefineConstants>$(DefineConstants);NETSTANDARD;NETCORE</DefineConstants>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" $(DefineConstants.Contains('NETFULL'))">
+    <LanguageTargets Condition="Exists('$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets')">$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets</LanguageTargets>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ML.Probabilistic" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.ML.Probabilistic.Compiler" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.Research.GloObject" Version="1.0.0" />
+    <Reference Include="Microsoft.CSharp" />
+    <ProjectReference Include="..\MBMLCommon\MBMLCommon.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(DefineConstants.Contains('NETFULL'))">
+    <PackageReference Include="Microsoft.ML.Probabilistic.Visualizers.Windows" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.Research.Glo" Version="1.0.0" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <ProjectReference Include="..\MBMLViews\MBMLViews.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Annotations.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup Condition=" $(DefineConstants.Contains('NETFULL'))">
+    <!-- XAML elements -->
+    <!-- Workaround to make xamls appear in the VS solution explorer -->
+    <None Include="**\*.xaml" />
+    <Page Include="**\*.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+  </ItemGroup>
+  <ItemGroup Condition=" !($(DefineConstants.Contains('NETFULL')))">
+    <!-- XAML elements -->
+    <None Include="**\*.xaml" />
+    <None Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+    <Compile Remove="**\*.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\*.objml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

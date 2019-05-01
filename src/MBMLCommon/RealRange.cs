@@ -14,7 +14,7 @@ namespace MBMLViews
     /// <summary>
     /// A class defining a minimum and maximum for a range on the real line
     /// </summary>
-    public sealed class RealRange : IEquatable<RealRange>, INotifyPropertyChanged // , IList<double>
+    public sealed class RealRange : IEquatable<RealRange>, INotifyPropertyChanged
     {
         /// <summary>
         /// The epsilon

@@ -5,7 +5,7 @@
     <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
     <AssemblyTitle>AssessingPeoplesSkills</AssemblyTitle>
     <Product>AssessingPeoplesSkills</Product>
-    <Copyright>Copyright © Microsoft 2018</Copyright>
+    <Copyright>Copyright © Microsoft 2019</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
     <DefineConstants>$(DefineConstants);NETFULL</DefineConstants>

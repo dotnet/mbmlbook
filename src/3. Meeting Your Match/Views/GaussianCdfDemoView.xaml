@@ -1,0 +1,35 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="MeetingYourMatch.Views.GaussianCdfDemoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:Microsoft.Research.Glo.Views;assembly=Microsoft.Research.Glo"
+             mc:Ignorable="d" 
+             DataContextChanged="UserControlDataContextChanged"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <views:WpfChartView Name="MyChart"
+                   Title=""
+                   ChartType="ScatterLine" 
+                   XAxisLabel=""
+                   YAxisLabel=""
+                   LineMarker="None"
+                   ShowLegend="No"
+                   ShowXGridlines="False"
+                   ShowYGridlines="False"
+                   XMinimum="-3"
+                   XMaximum="3.1"
+                   YMinimum="0"
+                   YMaximum="1"
+                   Width="{Binding ElementName=This, Path=Width}"
+                   Height="{Binding ElementName=This, Path=Height}"
+                   NumericAxisStringFormat="{Binding ElementName=This, Path=NumericAxisStringFormat}"
+                   ShowAxisLines="{Binding ElementName=This, Path=ShowAxisLines}"
+                   ShowXAxis="{Binding ElementName=This, Path=ShowXAxis}"
+                   ShowYAxis="{Binding ElementName=This, Path=ShowYAxis}"
+                   PresentationTraceSources.TraceLevel="High" />
+    </Grid>
+</UserControl>

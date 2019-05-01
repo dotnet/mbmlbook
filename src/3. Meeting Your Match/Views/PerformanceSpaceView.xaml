@@ -1,0 +1,119 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="MeetingYourMatch.Views.PerformanceSpaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:MeetingYourMatch.Views"
+             xmlns:views1="clr-namespace:Microsoft.Research.Glo.Views;assembly=Microsoft.Research.Glo"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500"
+             x:Name="This"
+             Margin="3">
+    <UserControl.Resources>
+        <views:PointToScreenConverter x:Key="PointToScreenConverter" />
+        <Style TargetType="views1:Arrow" x:Key="ArrowStyle">
+            <Setter Property="Stroke" Value="#666666" />
+            <Setter Property="StrokeThickness" Value="2" />
+            <Setter Property="IsEndArrow" Value="True" />
+            <Setter Property="IsStartArrow" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="ArrowLength" Value="5" />
+            <Setter Property="ArrowWidth" Value="5" />
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
+    <Grid d:DataContext="{views:PerformanceSpaceViewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!-- y-axis label -->
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Player1Label}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontStyle="Italic">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="-90" />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <!-- y-axis tick marks -->
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Width="40" Height="420" Margin="0,0,5,20">
+            <TextBlock Text="{Binding YMinimumText}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="18" />
+            <TextBlock Text="{Binding YMaximumText}" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="18" />
+        </Grid>
+        <!-- x-axis label -->
+        <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding Player2Label}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" FontStyle="Italic" />
+        <!-- x-axis tick marks -->
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Height="20" Width="420" Margin="35,5,0,0">
+            <TextBlock Text="{Binding XMaximumText}" HorizontalAlignment="Right" FontSize="18" />
+            <TextBlock Text="{Binding XMinimumText}" HorizontalAlignment="Left" FontSize="18" />
+        </Grid>
+        <Canvas Name="Canvas" Grid.Row="0" Grid.Column="2" Width="400" Height="400" Margin="0,10,10,0">
+            <Line Stroke="Black" X1="0" Y1="400" X2="400" Y2="400" />
+            <Line Stroke="Black" X1="0" Y1="400" X2="0" Y2="0" />
+            <Line Stroke="Black" X1="0" Y1="400" X2="400" Y2="0" StrokeDashArray="2 2" />
+
+            <Canvas Visibility="{Binding DrawMarginVisibility, Converter={StaticResource BoolToVis}}" Width="400" Height="400" Margin="0">
+                <!-- Draw margin -->
+                <Line Stroke="Black" X1="{Binding DrawMargin}" Y1="400" X2="400" Y2="{Binding DrawMargin}" StrokeDashArray="1 3" />
+                <Line Stroke="Black" X1="0" Y1="{Binding FourHundredMinusDrawMargin}" X2="{Binding FourHundredMinusDrawMargin}" Y2="0" StrokeDashArray="1 3" />
+            
+                <!-- Draw margin labels -->
+                <TextBlock Text="DrawMargin" Canvas.Left="310" Canvas.Top="180" Foreground="DarkBlue" />
+                <views1:Arrow X1="310" Y1="180" X2="292" Y2="144" Stroke="DarkBlue" />
+                <views1:Arrow X1="310" Y1="180" X2="242" Y2="130" Stroke="DarkBlue" />
+            </Canvas>
+                
+            <!-- Samples -->
+            <ItemsControl ItemsSource="{Binding Samples}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Width="400" Height="400" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Width="{Binding ElementName=This, Path=DataPointSize}" Height="{Binding ElementName=This, Path=DataPointSize}" Fill="LimeGreen" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left">
+                            <Setter.Value>
+                                <MultiBinding Converter="{StaticResource PointToScreenConverter}" ConverterParameter="1">
+                                    <Binding Path="X" />
+                                    <Binding ElementName="Canvas" Path="ActualWidth" />
+                                    <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type UserControl}}" Path="DataContext.XMinimum" />
+                                    <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type UserControl}}" Path="DataContext.XMaximum" />
+                                </MultiBinding>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Canvas.Top">
+                            <Setter.Value>
+                                <MultiBinding Converter="{StaticResource PointToScreenConverter}" ConverterParameter="-1">
+                                    <Binding Path="Y" />
+                                    <Binding ElementName="Canvas" Path="ActualHeight" />
+                                    <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type UserControl}}" Path="DataContext.YMinimum" />
+                                    <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type UserControl}}" Path="DataContext.YMaximum" />
+                                </MultiBinding>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
+            <StackPanel Orientation="Vertical" Canvas.Left="80" Canvas.Top="80">
+                <TextBlock Text="{Binding Path=Player1Wins}" FontSize="24" TextAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Canvas.Left="240" Canvas.Top="280">
+                <TextBlock Text="{Binding Path=Player2Wins}" FontSize="24" TextAlignment="Center" />
+            </StackPanel>
+        </Canvas>
+    </Grid>
+</UserControl>

@@ -1,0 +1,68 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="MeetingYourMatch.Views.SamplesFromGaussianView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:Microsoft.Research.Glo.Views;assembly=Microsoft.Research.Glo"
+             xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=DotNetProjects.DataVisualization.Toolkit"
+             xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
+             xmlns:glo="clr-namespace:Microsoft.Research.Glo;assembly=GloObject"
+             x:Name="This"
+             mc:Ignorable="d" 
+             DataContextChanged="SamplesFromGaussianViewOnDataContextChanged"
+             LayoutUpdated="SamplesFromGaussianViewOnLayoutUpdated"
+             d:DesignHeight="300" d:DesignWidth="300"
+             Width="400"
+             Height="300">
+    <UserControl.Resources>
+        <ControlTemplate TargetType="chartingToolkit:DataPoint" x:Key="DataPointTemplate">
+            <Canvas>
+                <Ellipse Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ToolTip="{TemplateBinding DependentValue, Converter={x:Static glo:ObjectToStringConverter.Instance}}"/>
+                <ContentPresenter Content="{Binding}" />
+                <!--ContentTemplate="{StaticResource BaseMarkerTemplate}" />-->
+            </Canvas>
+        </ControlTemplate>
+
+        <Style x:Key="BaseDataPointStyle" TargetType="chartingToolkit:DataPoint">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Width" Value="1" />
+            <Setter Property="Height" Value="1" />
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template" Value="{StaticResource DataPointTemplate}"/>
+        </Style>
+
+        <visualizationToolkit:ResourceDictionaryCollection x:Key="Palette">
+            <ResourceDictionary >
+                <Style x:Key="DataPointStyle" TargetType="chartingToolkit:DataPoint" BasedOn="{StaticResource BaseDataPointStyle}">
+                    <Setter Property="Background" Value="Blue"/>
+                </Style>
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <Style x:Key="DataPointStyle" TargetType="chartingToolkit:DataPoint" BasedOn="{StaticResource BaseDataPointStyle}">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </ResourceDictionary>
+        </visualizationToolkit:ResourceDictionaryCollection>
+
+    </UserControl.Resources>
+    <Grid>
+        <views:WpfChartView 
+            Name="MyChart"
+            Width="{Binding ElementName=This, Path=Width}"
+            Height="{Binding ElementName=This, Path=Height}"
+            ChartType="Bar"
+            LineMarker="None"
+            LinearAxisInterval="{Binding ElementName=This, Path=LinearAxisInterval}"
+            DataContext="{Binding ElementName=This, Path=ChartData}"
+            YAxisLabel="Proportion"
+            YMaximum="{Binding ElementName=This, Path=YMaximum}"
+            XMinimum="{Binding ElementName=This, Path=XMinimum}"
+            />
+            <!--XMinimum="{Binding ElementName=This, Path=XMinimum}"
+            XMaximum="{Binding ElementName=This, Path=XMaximum}"-->
+    </Grid>
+</UserControl>
