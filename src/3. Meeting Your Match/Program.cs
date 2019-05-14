@@ -62,7 +62,7 @@ namespace MeetingYourMatch
 
             outputter.Out(demoFigures.PerformanceSpace,
                 Contents.S1ModellingTheOutcomeOfGames.NumberedName,
-                "Jill’s and Fred’s performances");
+                "Jill's and Fred's performances");
 
             outputter.Out(demoFigures.PerformanceCurve,
                 Contents.S1ModellingTheOutcomeOfGames.NumberedName,
@@ -74,7 +74,7 @@ namespace MeetingYourMatch
 
             outputter.Out(demoFigures.PerformanceSpaceSamples,
                 Contents.S1ModellingTheOutcomeOfGames.NumberedName,
-                "Samples of Jill and Fred’s performances");
+                "Samples of Jill and Fred's performances");
 
             // Plot of performance space with additional samples
             modelRunner.JillFredSamples();

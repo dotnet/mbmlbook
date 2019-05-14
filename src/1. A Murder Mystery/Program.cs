@@ -31,7 +31,7 @@ namespace MurderMystery
             }
             catch (Exception e)
             {
-                Console.WriteLine($"\nAn unhadled exception was thrown:\n{e}");
+                Console.WriteLine($"\nAn unhandled exception was thrown:\n{e}");
             }
             finally
             {
