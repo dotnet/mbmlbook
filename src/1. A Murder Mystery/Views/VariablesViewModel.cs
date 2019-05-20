@@ -15,6 +15,9 @@ namespace MurderMystery
     /// </summary>
     public class VariablesViewModel : INotifyPropertyChanged
     {
+        private const double defaultSize = double.NaN;
+        private readonly string defaultText = string.Empty;
+
         /// <summary>
         /// The grey visibility.
         /// </summary>
@@ -165,12 +168,12 @@ namespace MurderMystery
                     return this.SquareWidth;
                 }
 
-                if (this.ViewType == ViewType.Joint)
+                if (this.ViewType == ViewType.Joint && this.Variables?.MurdererMarginals != null)
                 {
                     return this.SquareWidth * this.Variables.MurdererMarginals.Grey;
                 }
 
-                return double.NaN;
+                return defaultSize;
             }
         }
 
@@ -187,9 +190,12 @@ namespace MurderMystery
                     case ViewType.Posteriors:
                         return this.SquareHeight;
                     case ViewType.Conditionals:
-                        return this.SquareHeight * this.Variables.ConditionalsWeapon.RevolverGivenGrey;
+                        return this.Variables?.ConditionalsWeapon != null ? this.SquareHeight * this.Variables.ConditionalsWeapon.RevolverGivenGrey : defaultSize;
                     case ViewType.Joint:
-                        return this.SquareHeight * this.Variables.JointWeapon.RevolverGrey / this.Variables.MurdererMarginals.Grey;
+                        return
+                            this.Variables?.JointWeapon != null && this.Variables?.MurdererMarginals != null
+                            ? this.SquareHeight * this.Variables.JointWeapon.RevolverGrey / this.Variables.MurdererMarginals.Grey
+                            : defaultSize;
                     default:
                         return this.SquareHeight;
                 }
@@ -208,12 +214,12 @@ namespace MurderMystery
                     return this.SquareWidth;
                 }
 
-                if (this.ViewType == ViewType.Joint)
+                if (this.ViewType == ViewType.Joint && this.Variables?.MurdererMarginals != null)
                 {
                     return this.SquareWidth * this.Variables.MurdererMarginals.Grey;
                 }
 
-                return double.NaN;
+                return defaultSize;
             }
         }
 
@@ -230,9 +236,12 @@ namespace MurderMystery
                     case ViewType.Posteriors:
                         return this.SquareHeight;
                     case ViewType.Conditionals:
-                        return this.SquareHeight * this.Variables.ConditionalsWeapon.DaggerGivenGrey;
+                        return this.Variables?.ConditionalsWeapon != null ? this.SquareHeight * this.Variables.ConditionalsWeapon.DaggerGivenGrey : defaultSize;
                     case ViewType.Joint:
-                        return this.SquareHeight * this.Variables.JointWeapon.DaggerGrey / this.Variables.MurdererMarginals.Grey;
+                        return
+                            this.Variables?.JointWeapon != null && this.Variables?.MurdererMarginals != null
+                            ? this.SquareHeight * this.Variables.JointWeapon.DaggerGrey / this.Variables.MurdererMarginals.Grey
+                            : defaultSize;
                     default:
                         return this.SquareHeight;
                 }
@@ -251,12 +260,12 @@ namespace MurderMystery
                     return this.SquareWidth;
                 }
 
-                if (this.ViewType == ViewType.Joint)
+                if (this.ViewType == ViewType.Joint && this.Variables?.MurdererMarginals != null)
                 {
                     return this.SquareWidth * this.Variables.MurdererMarginals.Auburn;
                 }
 
-                return double.NaN;
+                return defaultSize;
             }
         }
 
@@ -273,9 +282,12 @@ namespace MurderMystery
                     case ViewType.Posteriors:
                         return this.SquareHeight;
                     case ViewType.Conditionals:
-                        return this.SquareHeight * this.Variables.ConditionalsWeapon.RevolverGivenAuburn;
+                        return this.Variables?.ConditionalsWeapon != null ? this.SquareHeight * this.Variables.ConditionalsWeapon.RevolverGivenAuburn : defaultSize;
                     case ViewType.Joint:
-                        return this.SquareHeight * this.Variables.JointWeapon.RevolverAuburn / this.Variables.MurdererMarginals.Auburn;
+                        return
+                            this.Variables?.JointWeapon != null && this.Variables?.MurdererMarginals != null
+                            ? this.SquareHeight * this.Variables.JointWeapon.RevolverAuburn / this.Variables.MurdererMarginals.Auburn
+                            : defaultSize;
                     default:
                         return this.SquareHeight;
                 }
@@ -294,12 +306,12 @@ namespace MurderMystery
                     return this.SquareWidth;
                 }
 
-                if (this.ViewType == ViewType.Joint)
+                if (this.ViewType == ViewType.Joint && this.Variables?.MurdererMarginals != null)
                 {
                     return this.SquareWidth * this.Variables.MurdererMarginals.Auburn;
                 }
 
-                return double.NaN;
+                return defaultSize;
             }
         }
 
@@ -316,9 +328,12 @@ namespace MurderMystery
                     case ViewType.Posteriors:
                         return this.SquareHeight;
                     case ViewType.Conditionals:
-                        return this.SquareHeight * this.Variables.ConditionalsWeapon.DaggerGivenAuburn;
+                        return this.Variables?.ConditionalsWeapon != null ? this.SquareHeight * this.Variables.ConditionalsWeapon.DaggerGivenAuburn : defaultSize;
                     case ViewType.Joint:
-                        return this.SquareHeight * this.Variables.JointWeapon.DaggerAuburn / this.Variables.MurdererMarginals.Auburn;
+                        return
+                            this.Variables?.JointWeapon != null && this.Variables?.MurdererMarginals != null
+                            ? this.SquareHeight * this.Variables.JointWeapon.DaggerAuburn / this.Variables.MurdererMarginals.Auburn
+                            : defaultSize;
                     default:
                         return this.SquareHeight;
                 }
@@ -332,7 +347,7 @@ namespace MurderMystery
         {
             get
             {
-                return this.Variables.WeaponObserved == Weapon.Revolver ? this.Opacity : 1.0;
+                return this.Variables != null && this.Variables.WeaponObserved == Weapon.Revolver ? this.Opacity : 1.0;
             }
         }
 
@@ -348,9 +363,9 @@ namespace MurderMystery
                     case ViewType.Conditionals:
                         return this.SquareWidth;
                     case ViewType.Posteriors:
-                        return this.SquareWidth * this.Variables.Posteriors.Grey;
+                        return this.Variables?.Posteriors != null ? this.SquareWidth * this.Variables.Posteriors.Grey : defaultSize;
                     default:
-                        return this.SquareWidth * this.Variables.MurdererMarginals.Grey;
+                        return this.Variables?.MurdererMarginals != null ? this.SquareWidth * this.Variables.MurdererMarginals.Grey : defaultSize;
                 }
             }
         }
@@ -367,9 +382,9 @@ namespace MurderMystery
                     case ViewType.Conditionals:
                         return this.SquareWidth;
                     case ViewType.Posteriors:
-                        return this.SquareWidth * this.Variables.Posteriors.Auburn;
+                        return this.Variables?.Posteriors != null ? this.SquareWidth * this.Variables.Posteriors.Auburn : defaultSize;
                     default:
-                        return this.SquareWidth * this.Variables.MurdererMarginals.Auburn;
+                        return this.Variables?.MurdererMarginals != null ? this.SquareWidth * this.Variables.MurdererMarginals.Auburn : defaultSize;
                 }
             }
         }
@@ -381,7 +396,7 @@ namespace MurderMystery
         {
             get
             {
-                return this.Variables.Posteriors.Grey.ToString(this.StringFormat);
+                return this.Variables?.Posteriors?.Grey.ToString(this.StringFormat) ?? defaultText;
             }
         }
 
@@ -399,7 +414,7 @@ namespace MurderMystery
                     case ViewType.Posteriors:
                         return this.GreyPosteriorText;
                     default:
-                        return this.Variables.MurdererMarginals.Grey.ToString(this.StringFormat);
+                        return this.Variables?.MurdererMarginals?.Grey.ToString(this.StringFormat) ?? defaultText;
                 }
             }
         }
@@ -411,7 +426,7 @@ namespace MurderMystery
         {
             get
             {
-                return this.Variables.Posteriors.Auburn.ToString(this.StringFormat);
+                return this.Variables?.Posteriors?.Auburn.ToString(this.StringFormat) ?? defaultText;
             }
         }
 
@@ -429,7 +444,7 @@ namespace MurderMystery
                     case ViewType.Posteriors:
                         return this.AuburnPosteriorText;
                     default:
-                        return this.Variables.MurdererMarginals.Auburn.ToString(this.StringFormat);
+                        return this.Variables?.MurdererMarginals?.Auburn.ToString(this.StringFormat) ?? defaultText;
                 }
             }
         }
@@ -444,9 +459,9 @@ namespace MurderMystery
                 switch (this.ViewType)
                 {
                     case ViewType.Conditionals:
-                        return this.Variables.ConditionalsWeapon.RevolverGivenGrey.ToString(this.StringFormat);
+                        return this.Variables?.ConditionalsWeapon?.RevolverGivenGrey.ToString(this.StringFormat) ?? defaultText;
                     case ViewType.Joint:
-                        return this.Variables.JointWeapon.RevolverGrey.ToString(this.StringFormat);
+                        return this.Variables?.JointWeapon?.RevolverGrey.ToString(this.StringFormat) ?? defaultText;
                     default:
                         return string.Empty;
                 }
@@ -463,11 +478,14 @@ namespace MurderMystery
                 switch (this.ViewType)
                 {
                     case ViewType.Conditionals:
-                        return this.Variables.ConditionalsWeapon.RevolverGivenGrey.ToString(this.StringFormat);
+                        return this.Variables?.ConditionalsWeapon?.RevolverGivenGrey.ToString(this.StringFormat) ?? defaultText;
                     case ViewType.Joint:
-                        return (this.Variables.JointWeapon.RevolverGrey / this.Variables.MurdererMarginals.Grey).ToString(this.StringFormat);
+                        return
+                            this.Variables?.JointWeapon != null && this.Variables?.MurdererMarginals != null
+                            ? (this.Variables.JointWeapon.RevolverGrey / this.Variables.MurdererMarginals.Grey).ToString(this.StringFormat)
+                            : defaultText;
                     default:
-                        return string.Empty;
+                        return defaultText;
                 }
             }
         }
@@ -482,11 +500,11 @@ namespace MurderMystery
                 switch (this.ViewType)
                 {
                     case ViewType.Conditionals:
-                        return this.Variables.ConditionalsWeapon.DaggerGivenGrey.ToString(this.StringFormat);
+                        return this.Variables?.ConditionalsWeapon?.DaggerGivenGrey.ToString(this.StringFormat) ?? defaultText;
                     case ViewType.Joint:
-                        return this.Variables.JointWeapon.DaggerGrey.ToString(this.StringFormat);
+                        return this.Variables?.JointWeapon?.DaggerGrey.ToString(this.StringFormat) ?? defaultText;
                     default:
-                        return string.Empty;
+                        return defaultText;
                 }
             }
         }
@@ -501,11 +519,14 @@ namespace MurderMystery
                 switch (this.ViewType)
                 {
                     case ViewType.Conditionals:
-                        return this.Variables.ConditionalsWeapon.DaggerGivenGrey.ToString(this.StringFormat);
+                        return this.Variables?.ConditionalsWeapon?.DaggerGivenGrey.ToString(this.StringFormat) ?? defaultText;
                     case ViewType.Joint:
-                        return (this.Variables.JointWeapon.DaggerGrey / this.Variables.MurdererMarginals.Grey).ToString(this.StringFormat);
+                        return
+                            this.Variables?.JointWeapon != null && this.Variables?.MurdererMarginals != null
+                            ? (this.Variables.JointWeapon.DaggerGrey / this.Variables.MurdererMarginals.Grey).ToString(this.StringFormat)
+                            : defaultText;
                     default:
-                        return string.Empty;
+                        return defaultText;
                 }
             }
         }
@@ -520,11 +541,11 @@ namespace MurderMystery
                 switch (this.ViewType)
                 {
                     case ViewType.Conditionals:
-                        return this.Variables.ConditionalsWeapon.RevolverGivenAuburn.ToString(this.StringFormat);
+                        return this.Variables?.ConditionalsWeapon?.RevolverGivenAuburn.ToString(this.StringFormat) ?? defaultText;
                     case ViewType.Joint:
-                        return this.Variables.JointWeapon.RevolverAuburn.ToString(this.StringFormat);
+                        return this.Variables?.JointWeapon?.RevolverAuburn.ToString(this.StringFormat) ?? defaultText;
                     default:
-                        return string.Empty;
+                        return defaultText;
                 }
             }
         }
@@ -539,11 +560,14 @@ namespace MurderMystery
                 switch (this.ViewType)
                 {
                     case ViewType.Conditionals:
-                        return this.Variables.ConditionalsWeapon.RevolverGivenAuburn.ToString(this.StringFormat);
+                        return this.Variables?.ConditionalsWeapon?.RevolverGivenAuburn.ToString(this.StringFormat) ?? defaultText;
                     case ViewType.Joint:
-                        return (this.Variables.JointWeapon.RevolverAuburn / this.Variables.MurdererMarginals.Auburn).ToString(this.StringFormat);
+                        return
+                            this.Variables?.JointWeapon != null && this.Variables?.MurdererMarginals != null
+                            ? (this.Variables.JointWeapon.RevolverAuburn / this.Variables.MurdererMarginals.Auburn).ToString(this.StringFormat)
+                            : defaultText;
                     default:
-                        return string.Empty;
+                        return defaultText;
                 }
             }
         }
@@ -558,11 +582,11 @@ namespace MurderMystery
                 switch (this.ViewType)
                 {
                     case ViewType.Conditionals:
-                        return this.Variables.ConditionalsWeapon.DaggerGivenAuburn.ToString(this.StringFormat);
+                        return this.Variables?.ConditionalsWeapon?.DaggerGivenAuburn.ToString(this.StringFormat) ?? defaultText;
                     case ViewType.Joint:
-                        return this.Variables.JointWeapon.DaggerAuburn.ToString(this.StringFormat);
+                        return this.Variables?.JointWeapon?.DaggerAuburn.ToString(this.StringFormat) ?? defaultText;
                     default:
-                        return string.Empty;
+                        return defaultText;
                 }
             }
         }
@@ -577,11 +601,14 @@ namespace MurderMystery
                 switch (this.ViewType)
                 {
                     case ViewType.Conditionals:
-                        return this.Variables.ConditionalsWeapon.DaggerGivenAuburn.ToString(this.StringFormat);
+                        return this.Variables?.ConditionalsWeapon?.DaggerGivenAuburn.ToString(this.StringFormat) ?? defaultText;
                     case ViewType.Joint:
-                        return (this.Variables.JointWeapon.DaggerAuburn / this.Variables.MurdererMarginals.Auburn).ToString(this.StringFormat);
+                        return
+                            this.Variables?.JointWeapon != null && this.Variables?.MurdererMarginals != null
+                            ? (this.Variables.JointWeapon.DaggerAuburn / this.Variables.MurdererMarginals.Auburn).ToString(this.StringFormat)
+                            : defaultText;
                     default:
-                        return string.Empty;
+                        return defaultText;
                 }
             }
         }
@@ -745,8 +772,8 @@ namespace MurderMystery
             get
             {
                 return this.ViewType == ViewType.Priors
-                           ? string.Format("P(murderer=Grey) = {0}", this.GreyTotalText)
-                           : string.Format("P(murderer=Grey | weapon=Revolver) = {0}", this.GreyTotalText);
+                           ? $"P(murderer=Grey) = {this.GreyTotalText}"
+                           : $"P(murderer=Grey | weapon=Revolver) = {this.GreyTotalText}";
             }
         }
 
@@ -758,8 +785,8 @@ namespace MurderMystery
             get
             {
                 return this.ViewType == ViewType.Priors
-                           ? string.Format("P(murderer=Auburn) = {0}", this.AuburnTotalText)
-                           : string.Format("P(murderer=Auburn | Weapon=Revolver) = {0}", this.AuburnTotalText);
+                           ? $"P(murderer=Auburn) = {this.AuburnTotalText}"
+                           : $"P(murderer=Auburn | Weapon=Revolver) = {this.AuburnTotalText}";
             }
         }
 
@@ -771,10 +798,10 @@ namespace MurderMystery
             get
             {
                 return this.ViewType == ViewType.Conditionals
-                           ? string.Format("P(murderer=Grey | weapon=Revolver) = {0}", this.GreyRevolverText)
-                           : this.Variables.WeaponObserved == Weapon.Revolver
-                                 ? string.Format("P(murderer=Grey, weapon=Revolver) = {0}", this.GreyPosteriorText)
-                                 : string.Format("P(murderer=Grey, weapon=Revolver) = {0}", this.GreyRevolverText);
+                           ? $"P(murderer=Grey | weapon=Revolver) = {this.GreyRevolverText}"
+                           : this.Variables != null && this.Variables.WeaponObserved == Weapon.Revolver
+                                 ? $"P(murderer=Grey, weapon=Revolver) = {this.GreyPosteriorText}"
+                                 : $"P(murderer=Grey, weapon=Revolver) = {this.GreyRevolverText}";
             }
         }
 
@@ -785,7 +812,7 @@ namespace MurderMystery
         {
             get
             {
-                return this.Variables.WeaponObserved == Weapon.Unknown || this.Variables.WeaponObserved == Weapon.Revolver;
+                return this.Variables != null && (this.Variables.WeaponObserved == Weapon.Unknown || this.Variables.WeaponObserved == Weapon.Revolver);
             }
         }
 
@@ -797,10 +824,10 @@ namespace MurderMystery
             get
             {
                 return this.ViewType == ViewType.Conditionals
-                           ? string.Format("P(murderer=Grey | weapon=Dagger) = {0}", this.GreyDaggerText)
-                           : this.Variables.WeaponObserved == Weapon.Dagger
-                                 ? string.Format("P(murderer=Grey, weapon=Dagger) = {0}", this.GreyPosteriorText)
-                                 : string.Format("P(murderer=Grey, weapon=Dagger) = {0}", this.GreyDaggerText);
+                           ? $"P(murderer=Grey | weapon=Dagger) = {this.GreyDaggerText}"
+                           : this.Variables != null && this.Variables.WeaponObserved == Weapon.Dagger
+                                 ? $"P(murderer=Grey, weapon=Dagger) = {this.GreyPosteriorText}"
+                                 : $"P(murderer=Grey, weapon=Dagger) = {this.GreyDaggerText}";
             }
         }
 
@@ -811,7 +838,7 @@ namespace MurderMystery
         {
             get
             {
-                return this.Variables.WeaponObserved == Weapon.Unknown || this.Variables.WeaponObserved == Weapon.Dagger;
+                return this.Variables != null && (this.Variables.WeaponObserved == Weapon.Unknown || this.Variables.WeaponObserved == Weapon.Dagger);
             }
         }
 
@@ -823,10 +850,10 @@ namespace MurderMystery
             get
             {
                 return this.ViewType == ViewType.Conditionals
-                           ? string.Format("P(murderer=Auburn | weapon=Dagger) = {0}", this.AuburnDaggerText)
-                           : this.Variables.WeaponObserved == Weapon.Dagger
-                                 ? string.Format("P(murderer=Auburn, weapon=Dagger) = {0}", this.AuburnPosteriorText)
-                                 : string.Format("P(murderer=Auburn, weapon=Dagger) = {0}", this.AuburnDaggerText);
+                           ? $"P(murderer=Auburn | weapon=Dagger) = {this.AuburnDaggerText}"
+                           : this.Variables != null && this.Variables.WeaponObserved == Weapon.Dagger
+                                 ? $"P(murderer=Auburn, weapon=Dagger) = {this.AuburnPosteriorText}"
+                                 : $"P(murderer=Auburn, weapon=Dagger) = {this.AuburnDaggerText}";
             }
         }
 
@@ -837,7 +864,7 @@ namespace MurderMystery
         {
             get
             {
-                return this.Variables.WeaponObserved == Weapon.Unknown || this.Variables.WeaponObserved == Weapon.Dagger;
+                return this.Variables != null && (this.Variables.WeaponObserved == Weapon.Unknown || this.Variables.WeaponObserved == Weapon.Dagger);
             }
         }
 
@@ -849,10 +876,10 @@ namespace MurderMystery
             get
             {
                 return this.ViewType == ViewType.Conditionals
-                           ? string.Format("P(murderer=Auburn | weapon=Revolver) = {0}", this.AuburnRevolverText)
-                           : this.Variables.WeaponObserved == Weapon.Revolver
-                                 ? string.Format("P(murderer=Auburn, weapon=Revolver) = {0}", this.AuburnPosteriorText)
-                                 : string.Format("P(murderer=Auburn, weapon=Revolver) = {0}", this.AuburnRevolverText);
+                           ? $"P(murderer=Auburn | weapon=Revolver) = {this.AuburnRevolverText}"
+                           : this.Variables != null && this.Variables.WeaponObserved == Weapon.Revolver
+                                 ? $"P(murderer=Auburn, weapon=Revolver) = {this.AuburnPosteriorText}"
+                                 : $"P(murderer=Auburn, weapon=Revolver) = {this.AuburnRevolverText}";
             }
         }
 
@@ -863,7 +890,7 @@ namespace MurderMystery
         {
             get
             {
-                return this.Variables.WeaponObserved == Weapon.Unknown || this.Variables.WeaponObserved == Weapon.Revolver;
+                return this.Variables != null && (this.Variables.WeaponObserved == Weapon.Unknown || this.Variables.WeaponObserved == Weapon.Revolver);
             }
         }
 
