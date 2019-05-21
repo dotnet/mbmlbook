@@ -237,7 +237,7 @@ namespace MeetingYourMatch.Items
         /// Gets the players.
         /// </summary>
         [Browsable(true)]
-        public override IList<string> Players => this.PlayerScores?.Keys?.ToList();
+        public override IList<string> Players => this.PlayerScores?.Keys.ToList();
 
         /// <summary>
         /// Gets or sets the scores.
