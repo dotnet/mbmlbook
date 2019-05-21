@@ -54,13 +54,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The stated skills mean frequency per person.
         /// </value>
-        public double[] StatedSkillsMeanFrequencyPerPerson
-        {
-            get
-            {
-                return Inputs == null ? null : Inputs.StatedSkills.Average();
-            }
-        }
+        public double[] StatedSkillsMeanFrequencyPerPerson => Inputs?.StatedSkills.Average();
 
         /// <summary>
         /// Gets the stated skills mean frequency per skill.
@@ -68,13 +62,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The stated skills mean frequency per skill.
         /// </value>
-        public Dictionary<string, double> StatedSkillsMeanFrequencyPerSkill
-        {
-            get
-            {
-                return Inputs == null ? null : this.GetAverageOfMetricBySkill(Inputs.StatedSkills);
-            }
-        }
+        public Dictionary<string, double> StatedSkillsMeanFrequencyPerSkill => Inputs != null ? GetAverageOfMetricBySkill(Inputs.StatedSkills) : null;
 
         /// <summary>
         /// Gets the stated skills mean frequency.
@@ -86,9 +74,7 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                return this.StatedSkillsMeanFrequencyPerSkill == null
-                           ? double.NaN
-                           : this.StatedSkillsMeanFrequencyPerSkill.Values.Average();
+                return StatedSkillsMeanFrequencyPerSkill?.Values.Average() ?? double.NaN;
             }
         }
 
@@ -98,15 +84,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of truth per person and skill.
         /// </value>
-        public double[][] LogProbabilityOfTruthPerPersonAndSkill
-        {
-            get
-            {
-                return (Results == null || Results.SkillsPosteriors == null)
-                           ? null
-                           : Results.SkillsPosteriors.GetLogProbabilityOfTruth(Inputs.StatedSkills);
-            }
-        }
+        public double[][] LogProbabilityOfTruthPerPersonAndSkill => Results?.SkillsPosteriors?.GetLogProbabilityOfTruth(Inputs.StatedSkills);
 
         /// <summary>
         /// Gets the log probability of truth per person.
@@ -114,15 +92,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of truth per person.
         /// </value>
-        public double[] LogProbabilityOfTruthPerPerson
-        {
-            get
-            {
-                return this.LogProbabilityOfTruthPerPersonAndSkill == null
-                           ? null
-                           : this.LogProbabilityOfTruthPerPersonAndSkill.Average();
-            }
-        }
+        public double[] LogProbabilityOfTruthPerPerson => LogProbabilityOfTruthPerPersonAndSkill?.Average();
 
         /// <summary>
         /// Gets the log probability of truth per skill.
@@ -130,13 +100,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of truth per skill.
         /// </value>
-        public Dictionary<string, double> LogProbabilityOfTruthPerSkill
-        {
-            get
-            {
-                return this.GetAverageOfMetricBySkill(this.LogProbabilityOfTruthPerPersonAndSkill);
-            }
-        }
+        public Dictionary<string, double> LogProbabilityOfTruthPerSkill => GetAverageOfMetricBySkill(LogProbabilityOfTruthPerPersonAndSkill);
 
         /// <summary>
         /// Gets the negative log probability of truth.
@@ -144,16 +108,9 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The negative log probability of truth.
         /// </value>
-        public double NegativeLogProbabilityOfTruth
-        {
-            get
-            {
-                return this.NegativeLogProbabilityOfTruthPerPerson == null
-                           ? double.NaN
-                           : this.NegativeLogProbabilityOfTruthPerPerson.Average();
-            }
-        }
-        
+        public double NegativeLogProbabilityOfTruth =>
+            NegativeLogProbabilityOfTruthPerPerson?.Average() ?? double.NaN;
+
         /// <summary>
         /// Gets the negative log probability of truth as array.
         /// Used to force ChartView to treat it as a series
@@ -161,15 +118,10 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The negative log probability of truth as array.
         /// </value>
-        public double[] NegativeLogProbabilityOfTruthAsArray
-        {
-            get
-            {
-                return this.NegativeLogProbabilityOfTruthPerPerson == null
-                           ? null
-                           : new[] { this.NegativeLogProbabilityOfTruthPerPerson.Average() };
-            }
-        }
+        public double[] NegativeLogProbabilityOfTruthAsArray =>
+            NegativeLogProbabilityOfTruthPerPerson == null
+                ? null
+                : new[] { NegativeLogProbabilityOfTruthPerPerson.Average() };
 
         /// <summary>
         /// Gets the negative log probability of truth as dictionary.
@@ -177,21 +129,16 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The negative log probability of truth as dictionary.
         /// </value>
-        public Dictionary<string, double> NegativeLogProbabilityOfTruthAsDictionary
-        {
-            get
-            {
-                return this.NegativeLogProbabilityOfTruthPerPerson == null
-                           ? null
-                           : new Dictionary<string, double>
-                                 {
-                                     {
-                                         string.Empty,
-                                         this.NegativeLogProbabilityOfTruthPerPerson.Average()
-                                     }
-                                 };
-            }
-        }
+        public Dictionary<string, double> NegativeLogProbabilityOfTruthAsDictionary =>
+            NegativeLogProbabilityOfTruthPerPerson == null
+                ? null
+                : new Dictionary<string, double>
+                {
+                    {
+                        string.Empty,
+                        NegativeLogProbabilityOfTruthPerPerson.Average()
+                    }
+                };
 
         /// <summary>
         /// Gets the negative log probability of truth per person and skill.
@@ -221,13 +168,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The negative log probability of truth per person.
         /// </value>
-        public double[] NegativeLogProbabilityOfTruthPerPerson
-        {
-            get
-            {
-                return this.NegativeLogProbabilityOfTruthPerPersonAndSkill.Average();
-            }
-        }
+        public double[] NegativeLogProbabilityOfTruthPerPerson => NegativeLogProbabilityOfTruthPerPersonAndSkill.Average();
 
         /// <summary>
         /// Gets the negative log probability of truth per skill.
@@ -235,13 +176,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The negative log probability of truth per skill.
         /// </value>
-        public Dictionary<string, double> NegativeLogProbabilityOfTruthPerSkill
-        {
-            get
-            {
-                return this.GetAverageOfMetricBySkill(this.NegativeLogProbabilityOfTruthPerPersonAndSkill);
-            }
-        }
+        public Dictionary<string, double> NegativeLogProbabilityOfTruthPerSkill => GetAverageOfMetricBySkill(NegativeLogProbabilityOfTruthPerPersonAndSkill);
 
         /// <summary>
         /// Gets the log probability of truth.
@@ -249,15 +184,8 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of truth.
         /// </value>
-        public double LogProbabilityOfTruth
-        {
-            get
-            {
-                return this.LogProbabilityOfTruthPerPerson == null
-                           ? double.NaN
-                           : this.LogProbabilityOfTruthPerPerson.Average();
-            }
-        }
+        public double LogProbabilityOfTruth =>
+            LogProbabilityOfTruthPerPerson?.Average() ?? double.NaN;
 
         /// <summary>
         /// Gets the log probability of truth as array.
@@ -265,15 +193,10 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of truth as array.
         /// </value>
-        public double[] LogProbabilityOfTruthAsArray
-        {
-            get
-            {
-                return this.LogProbabilityOfTruthPerPerson == null
-                           ? null
-                           : new[] { this.LogProbabilityOfTruthPerPerson.Average() };
-            }
-        }
+        public double[] LogProbabilityOfTruthAsArray =>
+            LogProbabilityOfTruthPerPerson == null
+                ? null
+                : new[] { LogProbabilityOfTruthPerPerson.Average() };
 
         /// <summary>
         /// Gets the log probability of truth as dictionary.
@@ -281,18 +204,13 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of truth as dictionary.
         /// </value>
-        public Dictionary<string, double> LogProbabilityOfTruthAsDictionary
-        {
-            get
-            {
-                return this.LogProbabilityOfTruthPerPerson == null
-                           ? null
-                           : new Dictionary<string, double>
-                                 {
-                                     { string.Empty, this.LogProbabilityOfTruthPerPerson.Average() }
-                                 };
-            }
-        }
+        public Dictionary<string, double> LogProbabilityOfTruthAsDictionary =>
+            LogProbabilityOfTruthPerPerson == null
+                ? null
+                : new Dictionary<string, double>
+                {
+                    { string.Empty, LogProbabilityOfTruthPerPerson.Average() }
+                };
 
         /// <summary>
         /// Gets the log probability of truth by probability guess.
@@ -300,15 +218,10 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of truth by probability guess.
         /// </value>
-        public Point LogProbabilityOfTruthByProbGuess
-        {
-            get
-            {
-                return this.Model == null
-                           ? new Point(double.NaN, double.NaN)
-                           : new Point(this.Model.ProbabilityOfGuess, this.LogProbabilityOfTruth);
-            }
-        }
+        public Point LogProbabilityOfTruthByProbGuess =>
+            Model == null
+                ? new Point(double.NaN, double.NaN)
+                : new Point(Model.ProbabilityOfGuess, LogProbabilityOfTruth);
 
         /// <summary>
         /// Gets the log probability of true is correct per person and question.
@@ -360,13 +273,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of true is correct per person.
         /// </value>
-        public double[] LogProbabilityOfTrueIsCorrectPerPerson
-        {
-            get
-            {
-                return this.LogProbabilityOfTrueIsCorrectPerPersonAndQuestion.Average();
-            }
-        }
+        public double[] LogProbabilityOfTrueIsCorrectPerPerson => LogProbabilityOfTrueIsCorrectPerPersonAndQuestion.Average();
 
         /// <summary>
         /// Gets the negative log probability of true is correct per skill.
@@ -374,13 +281,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of true is correct per skill.
         /// </value>
-        public Dictionary<string, double> LogProbabilityOfTrueIsCorrectPerSkill
-        {
-            get
-            {
-                return this.GetAverageOfMetricBySkill(this.LogProbabilityOfTrueIsCorrectPerPersonAndQuestion);
-            }
-        }
+        public Dictionary<string, double> LogProbabilityOfTrueIsCorrectPerSkill => GetAverageOfMetricBySkill(LogProbabilityOfTrueIsCorrectPerPersonAndQuestion);
 
         /// <summary>
         /// Gets the negative log probability of true is correct per skill.
@@ -388,13 +289,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The negative log probability of true is correct per skill.
         /// </value>
-        public Dictionary<string, double> NegativeLogProbabilityOfTrueIsCorrectPerSkill
-        {
-            get
-            {
-                return this.GetAverageOfMetricBySkill(this.NegativeLogProbabilityOfTrueIsCorrectPerPersonAndQuestion);
-            }
-        }
+        public Dictionary<string, double> NegativeLogProbabilityOfTrueIsCorrectPerSkill => GetAverageOfMetricBySkill(NegativeLogProbabilityOfTrueIsCorrectPerPersonAndQuestion);
 
         /// <summary>
         /// Gets the log probability of true is correct.
@@ -402,15 +297,8 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of true is correct.
         /// </value>
-        public double LogProbabilityOfTrueIsCorrect
-        {
-            get
-            {
-                return this.LogProbabilityOfTrueIsCorrectPerPerson == null
-                           ? double.NaN
-                           : this.LogProbabilityOfTrueIsCorrectPerPerson.Average();
-            }
-        }
+        public double LogProbabilityOfTrueIsCorrect =>
+            LogProbabilityOfTrueIsCorrectPerPerson?.Average() ?? double.NaN;
 
         /// <summary>
         /// Gets the log probability of true is correct by probability guess.
@@ -418,15 +306,10 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The log probability of true is correct by probability guess.
         /// </value>
-        public Point LogProbabilityOfTrueIsCorrectByProbGuess
-        {
-            get
-            {
-                return this.Model == null
-                           ? new Point(double.NaN, double.NaN)
-                           : new Point(this.Model.ProbabilityOfGuess, this.LogProbabilityOfTrueIsCorrect);
-            }
-        }
+        public Point LogProbabilityOfTrueIsCorrectByProbGuess =>
+            Model == null
+                ? new Point(double.NaN, double.NaN)
+                : new Point(Model.ProbabilityOfGuess, LogProbabilityOfTrueIsCorrect);
 
         /// <summary>
         /// Gets the negative log probability of true is correct.
@@ -434,15 +317,8 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The negative log probability of true is correct.
         /// </value>
-        public double NegativeLogProbabilityOfTrueIsCorrect
-        {
-            get
-            {
-                return this.LogProbabilityOfTrueIsCorrectPerPerson == null
-                           ? double.NaN
-                           : -this.LogProbabilityOfTrueIsCorrectPerPerson.Average();
-            }
-        }
+        public double NegativeLogProbabilityOfTrueIsCorrect =>
+            -LogProbabilityOfTrueIsCorrectPerPerson?.Average() ?? double.NaN;
 
         /// <summary>
         /// Gets the negative log probability of true is correct as dictionary.
@@ -450,13 +326,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The negative log probability of true is correct as dictionary.
         /// </value>
-        public Dictionary<string, double> NegativeLogProbabilityOfTrueIsCorrectAsDictionary
-        {
-            get
-            {
-                return new Dictionary<string, double> { { string.Empty, this.NegativeLogProbabilityOfTrueIsCorrect } };
-            }
-        }
+        public Dictionary<string, double> NegativeLogProbabilityOfTrueIsCorrectAsDictionary => new Dictionary<string, double> { { string.Empty, NegativeLogProbabilityOfTrueIsCorrect } };
 
         /// <summary>
         /// Gets the probability of truth per person and skill.
@@ -468,8 +338,7 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                return this.LogProbabilityOfTruthPerPersonAndSkill == null 
-                    ? null : this.LogProbabilityOfTruthPerPersonAndSkill.Select(ia => ia.Select(Math.Exp).ToArray()).ToArray();
+                return LogProbabilityOfTruthPerPersonAndSkill?.Select(ia => ia.Select(Math.Exp).ToArray()).ToArray();
             }
         }
 
@@ -479,15 +348,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The probability of truth per person.
         /// </value>
-        public double[] ProbabilityOfTruthPerPerson
-        {
-            get
-            {
-                return this.ProbabilityOfTruthPerPersonAndSkill == null
-                           ? null
-                           : this.ProbabilityOfTruthPerPersonAndSkill.Average();
-            }
-        }
+        public double[] ProbabilityOfTruthPerPerson => ProbabilityOfTruthPerPersonAndSkill?.Average();
 
         /// <summary>
         /// Gets the probability of truth per skill.
@@ -495,13 +356,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The probability of truth per skill.
         /// </value>
-        public Dictionary<string, double> ProbabilityOfTruthPerSkill
-        {
-            get
-            {
-                return this.GetAverageOfMetricBySkill(this.ProbabilityOfTruthPerPersonAndSkill);
-            }
-        }
+        public Dictionary<string, double> ProbabilityOfTruthPerSkill => GetAverageOfMetricBySkill(ProbabilityOfTruthPerPersonAndSkill);
 
         /// <summary>
         /// Gets the probability of truth.
@@ -509,13 +364,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The probability of truth.
         /// </value>
-        public double ProbabilityOfTruth
-        {
-            get
-            {
-                return this.ProbabilityOfTruthPerPerson == null ? double.NaN : this.ProbabilityOfTruthPerPerson.Average();
-            }
-        }
+        public double ProbabilityOfTruth => ProbabilityOfTruthPerPerson?.Average() ?? double.NaN;
 
         /// <summary>
         /// Gets the skills mean squared error per person.
@@ -523,15 +372,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The skills mean squared error per person.
         /// </value>
-        public double[] MeanSquaredErrorPerPerson
-        {
-            get
-            {
-                return (Results == null || Results.SkillsPosteriorMeans == null)
-                           ? null
-                           : Results.SkillsPosteriorMeans.MeanSquaredError(Inputs.StatedSkills);
-            }
-        }
+        public double[] MeanSquaredErrorPerPerson => Results?.SkillsPosteriorMeans?.MeanSquaredError(Inputs.StatedSkills);
 
         /// <summary>
         /// Gets the skills mean squared error per skill.
@@ -543,7 +384,7 @@ namespace AssessingPeoplesSkills
         { 
             get 
             {
-                if (Results == null || Results.SkillsPosteriorMeans == null)
+                if (Results?.SkillsPosteriorMeans == null)
                 {
                     return null;
                 }
@@ -559,13 +400,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The skills mean squared error.
         /// </value>
-        public double MeanSquaredError
-        {
-            get
-            {
-                return this.MeanSquaredErrorPerPerson == null ? double.NaN : this.MeanSquaredErrorPerPerson.Average();
-            }
-        }
+        public double MeanSquaredError => MeanSquaredErrorPerPerson?.Average() ?? double.NaN;
 
         /// <summary>
         /// Gets the fraction correct.
@@ -573,13 +408,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The fraction correct.
         /// </value>
-        public double FractionCorrect
-        {
-            get
-            {
-                return (this.FractionCorrectPerPerson == null) ? double.NaN : this.FractionCorrectPerPerson.Average();
-            }
-        }
+        public double FractionCorrect => FractionCorrectPerPerson?.Average() ?? double.NaN;
 
         /// <summary>
         /// Gets the fraction correct responses per question.
@@ -587,13 +416,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The fraction correct.
         /// </value>
-        public double[] FractionCorrectPerPerson
-        {
-            get
-            {
-                return Inputs == null ? null : Inputs.IsCorrect.Average();
-            }
-        }
+        public double[] FractionCorrectPerPerson => Inputs?.IsCorrect.Average();
 
         /// <summary>
         /// Gets the fraction correct per question.
@@ -601,13 +424,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The fraction correct per question.
         /// </value>
-        public double[] FractionCorrectPerQuestion
-        {
-            get
-            {
-                return Inputs == null ? null : Inputs.IsCorrect.Average(dimension: 1);
-            }
-        }
+        public double[] FractionCorrectPerQuestion => Inputs?.IsCorrect.Average(dimension: 1);
 
         /// <summary>
         /// Gets the fraction correct per skill.
@@ -615,13 +432,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The fraction correct per skill.
         /// </value>
-        public Dictionary<string, double> FractionCorrectPerSkill
-        {
-            get
-            {
-                return Inputs == null ? null : this.GetAverageOfMetricBySkill(Inputs.IsCorrect);
-            }
-        }
+        public Dictionary<string, double> FractionCorrectPerSkill => Inputs == null ? null : GetAverageOfMetricBySkill(Inputs.IsCorrect);
 
         /// <summary>
         /// Gets the expected fraction correct per person.
@@ -633,7 +444,7 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                if (Inputs == null || Inputs.Quiz == null)
+                if (Inputs?.Quiz == null)
                 {
                     return null;
                 }
@@ -647,7 +458,7 @@ namespace AssessingPeoplesSkills
                         bool[] skillsForQuestion = Inputs.StatedSkills[i].Where((item, index) => Inputs.Quiz.SkillsQuestionsMask[index][j]).ToArray();
                         bool hasAllSkills = skillsForQuestion.All(ia => ia);
 
-                        expected[j] += (hasAllSkills ? this.Model.ProbabilityOfNotMistake : this.Model.ProbabilityOfGuess) / Inputs.NumberOfPeople;
+                        expected[j] += (hasAllSkills ? Model.ProbabilityOfNotMistake : Model.ProbabilityOfGuess) / Inputs.NumberOfPeople;
                     }
                 }
 
@@ -661,17 +472,12 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The expected and true fraction correct.
         /// </value>
-        public Dictionary<string, double[]> ExpectedAndTrueFractionCorrect
-        {
-            get
+        public Dictionary<string, double[]> ExpectedAndTrueFractionCorrect =>
+            new Dictionary<string, double[]>
             {
-                return new Dictionary<string, double[]>
-                           {
-                               { "Predicted", this.ExpectedFractionCorrectPerPerson },
-                               { "Actual", this.FractionCorrectPerQuestion }
-                           };
-            }
-        }
+                { "Predicted", ExpectedFractionCorrectPerPerson },
+                { "Actual", FractionCorrectPerQuestion }
+            };
 
         /// <summary>
         /// Gets the fraction correct when has all skills.
@@ -679,15 +485,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The fraction correct when has all skills.
         /// </value>
-        public double FractionCorrectWhenHasAllSkills
-        {
-            get
-            {
-                return this.FractionCorrectPerQuestionWhenHasAllSkills == null
-                           ? double.NaN
-                           : this.FractionCorrectPerQuestionWhenHasAllSkills.Average();
-            }
-        }
+        public double FractionCorrectWhenHasAllSkills => FractionCorrectPerQuestionWhenHasAllSkills?.Average() ?? double.NaN;
 
         /// <summary>
         /// Gets the fraction correct when not all skills.
@@ -695,15 +493,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The fraction correct when not all skills.
         /// </value>
-        public double FractionCorrectWhenNotAllSkills
-        {
-            get
-            {
-                return this.FractionCorrectPerQuestionWhenNotAllSkills == null
-                           ? double.NaN
-                           : this.FractionCorrectPerQuestionWhenNotAllSkills.Average();
-            }
-        }
+        public double FractionCorrectWhenNotAllSkills => FractionCorrectPerQuestionWhenNotAllSkills?.Average() ?? double.NaN;
 
         /// <summary>
         /// Gets the fraction correct per question when has all skills.
@@ -715,7 +505,7 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                if (Inputs == null || Inputs.Quiz == null)
+                if (Inputs?.Quiz == null)
                 {
                     return null;
                 }
@@ -779,15 +569,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The fraction correct per question when has all skills binned.
         /// </value>
-        public int[] FractionCorrectPerQuestionWhenHasAllSkillsBinned
-        {
-            get
-            {
-                return this.FractionCorrectPerQuestionWhenHasAllSkills == null
-                           ? null
-                           : this.FractionCorrectPerQuestionWhenHasAllSkills.Bin(10, 0.0, 1.0);
-            }
-        }
+        public int[] FractionCorrectPerQuestionWhenHasAllSkillsBinned => FractionCorrectPerQuestionWhenHasAllSkills?.Bin(10, 0.0, 1.0);
 
         /// <summary>
         /// Gets the fraction correct per question when not all skills binned.
@@ -795,15 +577,8 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The fraction correct per question when not all skills binned.
         /// </value>
-        public int[] FractionCorrectPerQuestionWhenNotAllSkillsBinned
-        {
-            get
-            {
-                return this.FractionCorrectPerQuestionWhenNotAllSkills == null
-                           ? null
-                           : this.FractionCorrectPerQuestionWhenNotAllSkills.Bin(10, 0.0, 1.0);
-            }
-        }
+        public int[] FractionCorrectPerQuestionWhenNotAllSkillsBinned =>
+            FractionCorrectPerQuestionWhenNotAllSkills?.Bin(10, 0.0, 1.0);
 
         /// <summary>
         /// Gets the instances.
@@ -834,7 +609,7 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                return this.Instances.Where(ia => ia.Measurement);
+                return Instances.Where(ia => ia.Measurement);
             }
         }
 
@@ -845,7 +620,7 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                return this.Instances.Select(ia => new KeyValuePair<Instance, double>(ia, ia.Prediction));
+                return Instances.Select(ia => new KeyValuePair<Instance, double>(ia, ia.Prediction));
             }
         }
 
@@ -856,7 +631,7 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                return this.Instances.Select(ia => new Dictionary<bool, double> { { true, ia.Measurement ? ia.Prediction : 1 - ia.Prediction } });
+                return Instances.Select(ia => new Dictionary<bool, double> { { true, ia.Measurement ? ia.Prediction : 1 - ia.Prediction } });
             }
         }
 
@@ -870,7 +645,7 @@ namespace AssessingPeoplesSkills
                 if (PositiveInstances.Any())
                 {
                     return
-                        InferMetrics.ReceiverOperatingCharacteristicCurve(this.PositiveInstances, this.InstanceScores)
+                        InferMetrics.ReceiverOperatingCharacteristicCurve(PositiveInstances, InstanceScores)
                             .Select(ia => new Point(ia.First, ia.Second))
                             .ToArray();
                 }
@@ -899,17 +674,9 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The skills posterior histogram.
         /// </value>
-        public int[] SkillsPosteriorHistogram
-        {
-            get 
-            {
-                return Results == null || Results.SkillsPosteriorMeans == null
-                           ? null
-                           : Results.SkillsPosteriorMeans.Bin(10);
-            }
-        }
+        public int[] SkillsPosteriorHistogram => Results?.SkillsPosteriorMeans?.Bin(10);
 
-       /// <summary>
+        /// <summary>
         /// Gets the calibration curve.
         /// </summary>
         public Point[] CalibrationCurve
@@ -923,7 +690,7 @@ namespace AssessingPeoplesSkills
                 const int Bins = 5;
 
                 return
-                    evaluator.CalibrationCurve(true, this.Instances, this.PositivePredictions, Bins)
+                    evaluator.CalibrationCurve(true, Instances, PositivePredictions, Bins)
                              .Select(ia => new Point(ia.First, ia.Second))
                              .ToArray();
             }
