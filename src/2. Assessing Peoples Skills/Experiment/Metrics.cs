@@ -384,7 +384,7 @@ namespace AssessingPeoplesSkills
         { 
             get 
             {
-                if (Results?.SkillsPosteriorMeans == null)
+                if (Results?.SkillsPosteriorMeans == null || Inputs?.StatedSkills == null || Inputs.Quiz?.SkillShortNames == null)
                 {
                     return null;
                 }
@@ -444,7 +444,7 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                if (Inputs?.Quiz == null)
+                if (Inputs?.StatedSkills == null || Inputs.Quiz?.SkillsQuestionsMask == null)
                 {
                     return null;
                 }
