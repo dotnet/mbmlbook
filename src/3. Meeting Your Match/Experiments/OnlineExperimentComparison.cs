@@ -199,8 +199,10 @@ namespace MeetingYourMatch.Experiments
 
                 var players = OnlineExperiment.GetTopNPlayersBySkill(this.Experiments.Last(), 2);
 
-                Dictionary<string, object> dict = new Dictionary<string, object>();
-                dict["Player"] = players;
+                var dict = new Dictionary<string, object>
+                {
+                    ["Player"] = players
+                };
                 foreach (var experiment in this.Experiments)
                 {
                     dict[experiment.Name] = experiment.GetLatestPosteriors(players);
@@ -297,7 +299,7 @@ namespace MeetingYourMatch.Experiments
                 
                 foreach (var kvp in playerPosteriors)
                 {
-                    dict[string.Format("{0} ({1})", kvp.Key, experiment.Name)] = kvp.Value.Select(valueFunc).ToArray();
+                    dict[$"{kvp.Key} ({experiment.Name})"] = kvp.Value.Select(valueFunc).ToArray();
                     if (includeTruth && this.Truth != null)
                     {
                         dict[kvp.Key + " (Truth)"] = this.Truth[kvp.Key].Select(Utils.GetGaussianPoint).Cast<T>().ToArray();

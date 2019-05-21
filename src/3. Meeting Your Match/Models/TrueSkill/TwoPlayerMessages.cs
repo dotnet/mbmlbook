@@ -77,7 +77,7 @@ namespace MeetingYourMatch.Models.TrueSkill
         {
             get
             {
-                return this.MessageHistories.Where(ia => !ia.Key.Contains("use"))
+                return this.MessageHistories?.Where(ia => !ia.Key.Contains("use"))
                     .ToDictionary(ia => ia.Key.Replace("_", string.Empty), ia => ia.Value.First());
             }
         }
@@ -89,7 +89,7 @@ namespace MeetingYourMatch.Models.TrueSkill
         {
             get
             {
-                return this.MessageHistoriesConcise.ToDictionary(ia => ia.Key, ia => ia.Value.ToString());
+                return this.MessageHistoriesConcise?.ToDictionary(ia => ia.Key, ia => ia.Value.ToString());
             }
         }
 
@@ -100,10 +100,13 @@ namespace MeetingYourMatch.Models.TrueSkill
         {
             get
             {
+                if (MessageHistoriesConcise == null)
+                    return null;
+
                 var range = new RealRange { Min = 0, Max = 400, Steps = 1500 };
 
                 var list = new List<MessageDetails>();
-                foreach (KeyValuePair<string, Gaussian> ia in this.MessageHistoriesConcise)
+                foreach (var ia in MessageHistoriesConcise)
                 {
                     string direction;
                     string factor;
@@ -123,15 +126,15 @@ namespace MeetingYourMatch.Models.TrueSkill
                         factor = list.Last(el => el.Variable == variable).Factor;
                     }
 
-                    Func<double, double> evalFunc = x => Math.Exp(gaussian.GetLogProb(x));
-                
+                    double EvalFunc(double x) => Math.Exp(gaussian.GetLogProb(x));
+
                     list.Add(
                         new MessageDetails
                             {
                                 Factor = factor,
                                 Variable = variable,
                                 Direction = direction,
-                                Message = new FunctionViewModel { Name = gaussian.ToString("N2"), Function = evalFunc, Range = range }
+                                Message = new FunctionViewModel { Name = gaussian.ToString("N2"), Function = EvalFunc, Range = range }
                             });
                 }
 
@@ -151,9 +154,9 @@ namespace MeetingYourMatch.Models.TrueSkill
                 this.MessageHistories[messageEvent.MessageId] = new List<Gaussian>();
             }
 
-            if (messageEvent.Message is Gaussian)
+            if (messageEvent.Message is Gaussian item)
             {
-                this.MessageHistories[messageEvent.MessageId].Add((Gaussian)messageEvent.Message);
+                this.MessageHistories[messageEvent.MessageId].Add(item);
             }
 
             // Console.WriteLine(messageEvent);

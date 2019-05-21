@@ -127,7 +127,15 @@ namespace MeetingYourMatch
         /// <summary>
         /// Gets the draw proportion.
         /// </summary>
-        public double DrawProportion => this.Games.Average(ia => ia.DrawProportion);
+        public double DrawProportion
+        {
+            get
+            {
+                if (Games == null)
+                    return 0;
+                return Games.Any() ? Games.Average(ia => ia.DrawProportion) : 0;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the games.
