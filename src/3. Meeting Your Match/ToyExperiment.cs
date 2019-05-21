@@ -36,10 +36,10 @@ namespace MeetingYourMatch
         /// <param name="priors">The priors.</param>
         public ToyExperiment(IModel model, Game game, Marginals priors)
         {
-            this.Model = model;
-            this.Game = game;
-            this.Priors = priors;
-            this.Posteriors = this.Model.Train(this.Game, this.Game.Players, this.Priors).Posteriors;
+            Model = model;
+            Game = game;
+            Priors = priors;
+            Posteriors = Model.Train(Game, Game.Players, Priors).Posteriors;
         }
 
         /// <summary>
@@ -69,15 +69,18 @@ namespace MeetingYourMatch
         {
             get
             {
+                if (Priors?.Skills == null || Posteriors?.Skills == null)
+                    return null;
+
                 var dict = new Dictionary<string, Dictionary<DistributionType, Gaussian>>();
-                foreach (var kvp in this.Priors.Skills.Where(kvp => this.Posteriors.Skills.ContainsKey(kvp.Key)))
+                foreach (var kvp in Priors.Skills.Where(kvp => Posteriors.Skills.ContainsKey(kvp.Key)))
                 {
                     dict[kvp.Key] = new Dictionary<DistributionType, Gaussian>
                                         {
                                             { DistributionType.Prior, kvp.Value },
                                             {
                                                 DistributionType.Posterior,
-                                                this.Posteriors.Skills[kvp.Key]
+                                                Posteriors.Skills[kvp.Key]
                                             }
                                         };
                 }
@@ -93,10 +96,12 @@ namespace MeetingYourMatch
         {
             get
             {
-                var summaryTable = new Dictionary<string, object>();
-                summaryTable["Player"] = this.Game.Players;
-                summaryTable["Before"] = this.Priors.Skills.Values.Select(Utils.GetMean);
-                summaryTable["After"] = this.Posteriors.Skills.Values.Select(Utils.GetMean);
+                var summaryTable = new Dictionary<string, object>
+                {
+                    ["Player"] = Game?.Players,
+                    ["Before"] = Priors?.Skills?.Values.Select(Utils.GetMean),
+                    ["After"] = Posteriors?.Skills?.Values.Select(Utils.GetMean)
+                };
                 return summaryTable;
             }
         }
@@ -109,7 +114,7 @@ namespace MeetingYourMatch
         /// </returns>
         public override string ToString()
         {
-            return string.Format("Model: {0}\nGame: {1}\nPriors: {2}\nPosteriors: {3}", this.Model, this.Game, this.Priors, this.Posteriors);
+            return $"Model: {Model}\nGame: {Game}\nPriors: {Priors}\nPosteriors: {Posteriors}";
         }
     }
 }

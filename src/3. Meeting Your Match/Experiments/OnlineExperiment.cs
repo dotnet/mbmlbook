@@ -70,18 +70,12 @@ namespace MeetingYourMatch.Experiments
         /// <summary>
         /// Gets the draw margin means.
         /// </summary>
-        public IList<double> DrawMarginMeans
-        {
-            get { return this.DrawMargins.Select(Utils.GetMean).ToArray(); }
-        }
+        public IList<double> DrawMarginMeans => DrawMargins?.Select(Utils.GetMean).ToArray();
 
         /// <summary>
         /// Gets the draw margin means and variances.
         /// </summary>
-        public Microsoft.Research.Glo.Views.PointWithBounds[] DrawMarginMeansAndStandardDeviations
-        {
-            get { return this.DrawMargins.Select(Utils.GetMeanAndStandardDeviation).ToArray(); }
-        }
+        public GaussianPoint[] DrawMarginMeansAndStandardDeviations => DrawMargins?.Select(Utils.GetMeanAndStandardDeviation).ToArray();
 
         /// <summary>
         /// Gets the latest posteriors.
@@ -90,9 +84,7 @@ namespace MeetingYourMatch.Experiments
         {
             get
             {
-                return this.PlayerPosteriors == null
-                           ? null
-                           : this.PlayerPosteriors.ToDictionary(ia => ia.Key, ia => ia.Value.Last());
+                return PlayerPosteriors?.ToDictionary(ia => ia.Key, ia => ia.Value.Last());
             }
         }
 
@@ -103,7 +95,7 @@ namespace MeetingYourMatch.Experiments
         {
             get
             {
-                return this.LatestPosteriors.Average(ia => ia.Value.GetMean());
+                return this.LatestPosteriors?.Average(ia => ia.Value.GetMean()) ?? 0;
             }
         }
 
@@ -114,14 +106,11 @@ namespace MeetingYourMatch.Experiments
         {
             get
             {
-                return this.PlayerPosteriors == null
-                           ? null
-                           : this.PlayerPosteriors
-                                 .OrderByDescending(ia => ia.Value.Count)
-                                 .ThenByDescending(ia => Utils.GetMean(ia.Value.Last()))
-                                 .Take(10)
-                                 .OrderBy(ia => ia.Key)
-                                 .ToDictionary(ia => ia.Key, ia => ia.Value.Select((g, i) => new Point(i, Utils.GetMean(g))).ToArray());
+                return PlayerPosteriors?.OrderByDescending(ia => ia.Value.Count)
+                    .ThenByDescending(ia => Utils.GetMean(ia.Value.Last()))
+                    .Take(10)
+                    .OrderBy(ia => ia.Key)
+                    .ToDictionary(ia => ia.Key, ia => ia.Value.Select((g, i) => new Point(i, Utils.GetMean(g))).ToArray());
             }
         }
 
@@ -132,13 +121,11 @@ namespace MeetingYourMatch.Experiments
         {
             get
             {
-                return this.PlayerPosteriors == null
-                           ? null
-                           : this.PlayerPosteriors.OrderByDescending(ia => ia.Value.Count)
-                                 .ThenByDescending(ia => Utils.GetMean(ia.Value.Last()))
-                                 .Take(10)
-                                 .OrderBy(ia => ia.Key)
-                                 .ToDictionary(ia => ia.Key, ia => ia.Value.Select(Utils.GetMeanAndStandardDeviation).ToArray());
+                return PlayerPosteriors?.OrderByDescending(ia => ia.Value.Count)
+                    .ThenByDescending(ia => Utils.GetMean(ia.Value.Last()))
+                    .Take(10)
+                    .OrderBy(ia => ia.Key)
+                    .ToDictionary(ia => ia.Key, ia => ia.Value.Select(Utils.GetMeanAndStandardDeviation).ToArray());
             }
         }
 
@@ -149,13 +136,10 @@ namespace MeetingYourMatch.Experiments
         {
             get
             {
-                return this.PlayerPosteriors == null
-                           ? null
-                           : this.PlayerPosteriors
-                                 .OrderByDescending(ia => Utils.ConservativeSkill(ia.Value.Last()))
-                                 .Take(2)
-                                 .OrderBy(ia => ia.Key)
-                                 .ToDictionary(ia => ia.Key, ia => ia.Value.Select(Utils.GetMeanAndStandardDeviation).ToArray());
+                return PlayerPosteriors?.OrderByDescending(ia => Utils.ConservativeSkill(ia.Value.Last()))
+                    .Take(2)
+                    .OrderBy(ia => ia.Key)
+                    .ToDictionary(ia => ia.Key, ia => ia.Value.Select(Utils.GetMeanAndStandardDeviation).ToArray());
             }
         }
 
@@ -171,7 +155,7 @@ namespace MeetingYourMatch.Experiments
         {
             get
             {
-                if (this.Predictions == null || this.Predictions.Count == 0)
+                if (Predictions == null || Predictions.Count == 0)
                 {
                     return null;
                 }
@@ -194,9 +178,7 @@ namespace MeetingYourMatch.Experiments
         {
             get
             {
-                return this.CumulativeErrors == null
-                           ? null
-                           : this.CumulativeErrors.Select((ia, i) => (double)ia / (i + 1));
+                return CumulativeErrors?.Select((ia, i) => (double)ia / (i + 1));
             }
         }
 
@@ -328,15 +310,12 @@ namespace MeetingYourMatch.Experiments
                     }
 
                     // Predict outcome of game
-                    if (this.PredictModel != null)
+                    var prediction = PredictModel?.PredictOutcome(game, priors);
+                    if (prediction != null)
                     {
-                        var prediction = this.PredictModel.PredictOutcome(game, priors);
-                        if (prediction != null)
-                        {
-                            this.Predictions.Add(prediction);
-                        }
+                        this.Predictions.Add(prediction);
                     }
-                    
+
                     // Train model using this game
                     this.LastResults = this.TrainModel.Train(game, game.Players, priors);
 
@@ -349,7 +328,7 @@ namespace MeetingYourMatch.Experiments
 
                     if (verbose)
                     {
-                        var post = this.LastResults.Posteriors.Skills.Select(ia => string.Format("{0}: {1}", ia.Key, ia.Value)).ToArray();
+                        var post = this.LastResults.Posteriors.Skills.Select(ia => $"{ia.Key}: {ia.Value}").ToArray();
                         Console.WriteLine(@"Game {0}, Posteriors: {1}", game.Id, string.Join(", ", post));
                     }
                 }

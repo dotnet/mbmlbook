@@ -237,25 +237,13 @@ namespace MeetingYourMatch.Items
         /// Gets the players.
         /// </summary>
         [Browsable(true)]
-        public override IList<string> Players
-        {
-            get
-            {
-                return this.PlayerScores.Keys.ToList();
-            }
-        }
+        public override IList<string> Players => this.PlayerScores?.Keys?.ToList();
 
         /// <summary>
         /// Gets or sets the scores.
         /// </summary>
         [Browsable(true)]
-        public override sealed IList<int> Scores
-        {
-            get
-            {
-                return this.PlayerScores.Values.ToList();
-            }
-        }
+        public sealed override IList<int> Scores => this.PlayerScores?.Values.ToList();
 
         /// <summary>
         /// Gets the players in all of the teams in descending order of score.

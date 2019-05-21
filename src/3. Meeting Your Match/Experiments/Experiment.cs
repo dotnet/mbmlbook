@@ -33,7 +33,7 @@ namespace MeetingYourMatch.Experiments
         /// </summary>
         public string Name
         {
-            get => name ?? TrainModel.Name;
+            get => name ?? TrainModel?.Name ?? "Unknown experiment";
             set => name = value;
         }
 
@@ -59,60 +59,41 @@ namespace MeetingYourMatch.Experiments
         {
             get
             {
-                return this.PlayerPosteriors == null
-                           ? null
-                           : this.PlayerPosteriors.Select(
-                               ia => new KeyValuePair<string, double>(ia.Key, Utils.ConservativeSkill(ia.Value.Last())))
-                                 .OrderByDescending(x => x.Value)
-                                 .ToDictionary(ia => ia.Key, ia => ia.Value);
+                return PlayerPosteriors?.Select(
+                        ia => new KeyValuePair<string, double>(ia.Key, Utils.ConservativeSkill(ia.Value.Last())))
+                    .OrderByDescending(x => x.Value)
+                    .ToDictionary(ia => ia.Key, ia => ia.Value);
             }
         }
 
         /// <summary>
         /// Gets the leader board.
         /// </summary>
-        public IEnumerable<LeaderBoardElement> LeaderBoardTable
-        {
-            get
-            {
-                return this.PlayerPosteriors == null
-                           ? null
-                           : from p in this.PlayerPosteriors
-                             let last = p.Value.Last()
-                             let trueSkill = Utils.ConservativeSkill(last)
-                             orderby trueSkill descending
-                             select
-                                 new LeaderBoardElement
-                                     {
-                                         Id = p.Key,
-                                         GamesPlayed = p.Value.Count,
-                                         SkillMean = Utils.GetMean(last),
-                                         TrueSkill = trueSkill
-                                     };
-            }
-        }
+        public IEnumerable<LeaderBoardElement> LeaderBoardTable =>
+            this.PlayerPosteriors == null
+                ? null
+                : from p in this.PlayerPosteriors
+                let last = p.Value.Last()
+                let trueSkill = Utils.ConservativeSkill(last)
+                orderby trueSkill descending
+                select
+                    new LeaderBoardElement
+                    {
+                        Id = p.Key,
+                        GamesPlayed = p.Value.Count,
+                        SkillMean = Utils.GetMean(last),
+                        TrueSkill = trueSkill
+                    };
 
         /// <summary>
         /// Gets the leader board table top 10.
         /// </summary>
-        public IEnumerable<LeaderBoardElement> LeaderBoardTableTop10
-        {
-            get
-            {
-                return this.LeaderBoardTable == null ? null : this.LeaderBoardTable.Take(10);
-            }
-        }
+        public IEnumerable<LeaderBoardElement> LeaderBoardTableTop10 => LeaderBoardTable?.Take(10);
 
         /// <summary>
         /// Gets the player count.
         /// </summary>
-        public int PlayerCount
-        {
-            get
-            {
-                return this.PlayerPosteriors == null ? 0 : this.PlayerPosteriors.Count;
-            }
-        }
+        public int PlayerCount => PlayerPosteriors?.Count ?? 0;
 
         /// <summary>
         /// Gets or sets the training model.
