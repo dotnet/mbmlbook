@@ -812,14 +812,17 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                bool[] measurements = Inputs.StatedSkills.Flatten();
-                double[] predictions = Results.SkillsPosteriorMeans.Flatten();
-                
-                for (int i = 0; i < measurements.Length; i++)
-                {
-                    bool m = measurements[i];
-                    double p = predictions[i];
-                    yield return new Instance { Index = i, Measurement = m, Prediction = p };
+                if (Inputs?.StatedSkills != null && Results?.SkillsPosteriorMeans != null)
+                { 
+                    bool[] measurements = Inputs.StatedSkills.Flatten();
+                    double[] predictions = Results.SkillsPosteriorMeans.Flatten();
+
+                    for (int i = 0; i < measurements.Length; i++)
+                    {
+                        bool m = measurements[i];
+                        double p = predictions[i];
+                        yield return new Instance {Index = i, Measurement = m, Prediction = p};
+                    }
                 }
             }
         }
@@ -864,10 +867,14 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                return
-                    InferMetrics.ReceiverOperatingCharacteristicCurve(this.PositiveInstances, this.InstanceScores)
-                                .Select(ia => new Point(ia.First, ia.Second))
-                                .ToArray();
+                if (PositiveInstances.Any())
+                {
+                    return
+                        InferMetrics.ReceiverOperatingCharacteristicCurve(this.PositiveInstances, this.InstanceScores)
+                            .Select(ia => new Point(ia.First, ia.Second))
+                            .ToArray();
+                }
+                return new Point[0];
             }
         }
         
@@ -878,7 +885,11 @@ namespace AssessingPeoplesSkills
         {
             get
             {
-                return InferMetrics.AreaUnderRocCurve(this.PositiveInstances, this.InstanceScores);
+                if (PositiveInstances.Any())
+                {
+                    return InferMetrics.AreaUnderRocCurve(PositiveInstances, InstanceScores);
+                }
+                return 0;
             }
         }
 

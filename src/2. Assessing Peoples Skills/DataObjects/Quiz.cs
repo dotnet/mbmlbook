@@ -21,13 +21,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The number of skills.
         /// </value>
-        public int NumberOfSkills
-        {
-            get
-            {
-                return this.SkillNames.Length;
-            }
-        }
+        public int NumberOfSkills => SkillNames?.Length ?? 0;
 
         /// <summary>
         /// Gets the number of questions.
@@ -35,10 +29,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The number of questions.
         /// </value>
-        public int NumberOfQuestions
-        {
-            get { return this.SkillsForQuestion == null ? 0 : this.SkillsForQuestion.Length; }
-        }
+        public int NumberOfQuestions => SkillsForQuestion?.Length ?? 0;
 
         /// <summary>
         /// Gets or sets the skill names.
@@ -77,7 +68,7 @@ namespace AssessingPeoplesSkills
                         return parts[0].Trim();
                 };
                 
-                return this.SkillNames == null ? null : this.SkillNames.Select(removeNumbers).Select(shortener).ToArray();
+                return SkillNames?.Select(removeNumbers).Select(shortener).ToArray();
             }
         }
 
@@ -95,13 +86,7 @@ namespace AssessingPeoplesSkills
         /// <value>
         /// The number skills for question.
         /// </value>
-        public int[] NumberSkillsForQuestion
-        {
-            get
-            {
-                return (from row in this.SkillsForQuestion select row.Length).ToArray();
-            }
-        }
+        public int[] NumberSkillsForQuestion => SkillsForQuestion?.Select(row => row.Length).ToArray();
 
         /// <summary>
         /// Gets the skills questions mask.
