@@ -1,0 +1,88 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
+    <AssemblyTitle>UnclutteringYourInbox</AssemblyTitle>
+    <Product>UnclutteringYourInbox</Product>
+    <Copyright>Copyright ©  2013</Copyright>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
+    <DefineConstants>$(DefineConstants);NETFULL</DefineConstants>
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1'">
+    <DefineConstants>$(DefineConstants);NETSTANDARD;NETCORE</DefineConstants>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <DefineConstants>$(DefineConstants);TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" $(DefineConstants.Contains('NETFULL'))">
+    <LanguageTargets Condition="Exists('$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets')">$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets</LanguageTargets>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ML.Probabilistic" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.ML.Probabilistic.Compiler" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.ML.Probabilistic.Learners" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.Research.GloObject" Version="1.0.0" />
+    <Reference Include="Microsoft.CSharp" />
+    <ProjectReference Include="..\MBMLCommon\MBMLCommon.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(DefineConstants.Contains('NETFULL'))">
+    <PackageReference Include="Microsoft.ML.Probabilistic.Visualizers.Windows" Version="0.3.1810.501" />
+    <PackageReference Include="Microsoft.Research.Glo" Version="1.0.0" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <ProjectReference Include="..\MBMLViews\MBMLViews.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" $(DefineConstants.Contains('NETFULL'))">
+    <!-- XAML elements -->
+    <!-- Workaround to make xamls appear in the VS solution explorer -->
+    <None Include="**\*.xaml" />
+    <Page Include="**\*.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+  </ItemGroup>
+  <ItemGroup Condition=" !($(DefineConstants.Contains('NETFULL')))">
+    <!-- XAML elements -->
+    <None Include="**\*.xaml" />
+    <None Include="Views\*.cs" />
+    <None Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+    <Compile Remove="**\*.xaml.cs" />
+    <Compile Remove="Views\**\*.cs" />
+    <Compile Remove="DesktopSearchProvider.cs" />
+    <None Include="DesktopSearchProvider.cs" />
+    <Compile Remove="UserMailAnalyzer.cs" />
+    <None Include="UserMailAnalyzer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\app.manifest">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </None>
+    <Content Include="Icons\*.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Data\*.objml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

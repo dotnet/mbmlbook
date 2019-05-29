@@ -29,9 +29,10 @@ When targeting .NET Framework/Windows code produces visualizations using [Glo](G
         * Views - additional [Glo](GLO.md) views needed for specific chapter. Not included in compilation when targeting .Net Core.
         * Contents.cs - static type that has constants for the name of the chapter and all the sections within the chapter
         * Program.cs
-	* 3\. Meeting Your Match
-		* Similar layout to chapter 2.
-    * MBMLCommon/ - a number of utility classes shared by different projects including
+    * 3\. Meeting Your Match
+        * This chapter and the remaining chapters have similar layout to chapter 2.
+    * 4\. Uncluttering Your Inbox 
+    * MBMLCommon/ -  a number of utility classes shared by different projects including
         * Outputter.cs - class that encapsulates outputting objects, so that the code for chapters can output results in a platform-agnostic way. Also exposes methods for saving outputs to .objml files. 
     * MBMLViews - additional [Glo](GLO.md) views shared among the chapters.
 * test/ - projects with unit tests

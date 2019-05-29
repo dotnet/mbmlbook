@@ -1,0 +1,87 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<UserControl x:Class="UnclutteringYourInbox.Views.InboxView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:glo="clr-namespace:Microsoft.Research.Glo;assembly=Microsoft.Research.Glo"
+             xmlns:views="clr-namespace:UnclutteringYourInbox.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="This"
+             DataContextChanged="InboxViewOnDataContextChanged"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="Heading">
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontWeight" Value="bold"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+            <Setter Property="Foreground" Value="#a0a0a0"/>
+        </Style>
+        <Style TargetType="Border" x:Key="Border">
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource Border}" CornerRadius="5,0,0,0">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource Heading}" >reply to?</TextBlock>
+                    <TextBlock DockPanel.Dock="Right" TextAlignment="Right">Order by 
+                        <Hyperlink Click="OrderByDate" IsEnabled="{Binding OrderByDateIsEnabled}">date</Hyperlink> | 
+                        <Hyperlink Click="OrderByProbabilityOfReply" IsEnabled="{Binding OrderByProbabilityOfReplyIsEnabled}">p(ReplyTo)</Hyperlink> 
+                        <Hyperlink Click="ToggleOrderDirection" IsEnabled="{Binding UpArrowIsEnabled}">↑</Hyperlink>
+                        <Hyperlink Click="ToggleOrderDirection" IsEnabled="{Binding DownArrowIsEnabled}">↓</Hyperlink>
+                    </TextBlock>
+                </DockPanel>
+                <views:ConversationListView 
+                    x:Name="ConversationListView"
+                    ItemsSource="{Binding ToReply}" 
+                    glo:Progress.Source="{Binding ReplyToModelProgress}"
+                    CutOff="{Binding CutOff}"
+                    Anonymize="{Binding Anonymize}"
+                    SelectionChanged="ConversationListViewSelectionChanged"
+                    IsKeyboardFocusWithinChanged="ConversationListViewIsKeyboardFocusWithinChanged"/>
+            </DockPanel>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource Border}" CornerRadius="0,5,5,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Feature Set: " HorizontalAlignment="Right" />
+                <ComboBox Grid.Row="0" Grid.Column="1" Width="150"
+                          Margin="20,0,0,0"
+                          ItemsSource="{Binding ElementName=This, Path=FeatureSetTypes}" 
+                          SelectedValue="{Binding ElementName=This, Path=FeatureSetType}" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Use slider below to adjust cut-off" />
+                <Slider Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Value="{Binding CutOff}" Minimum="0" Maximum="1" IsSnapToTickEnabled="True" TickFrequency="0.05"
+                        TickPlacement="BottomRight" AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" />
+                <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ErrorRates}" />
+                <views:ConversationView x:Name="ConversationView" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+                                        glo:Progress.Source="{Binding ReplyToModelProgress}"
+                                        CutOff="{Binding CutOff}" 
+                                        Anonymize="{Binding ElementName=This, Path=Anonymize}" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,140 @@
+<!-- Licensed to the .NET Foundation under one or more agreements.
+     The .NET Foundation licenses this file to you under the MIT license.
+     See the LICENSE file in the project root for more information. -->
+<Expander x:Class="UnclutteringYourInbox.Views.MessageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:glo="clr-namespace:Microsoft.Research.Glo;assembly=GloObject"
+    DataContextChanged="UserControlDataContextChanged" 
+    mc:Ignorable="d" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:items="clr-namespace:UnclutteringYourInbox"
+    xmlns:converters="clr-namespace:UnclutteringYourInbox.Views.Converters"
+    x:Name="This"
+    d:DesignHeight="436" d:DesignWidth="644" d:DataContext="{items:Message}">
+    <Expander.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <converters:NotBooleanToVisibilityConverter x:Key="NotBoolToVis"/>
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Flag}" Value="Flagged">
+                    <Setter Property="Foreground" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Expander.Resources>
+
+    <Expander.Header>
+        <!-- border fixes issue in expander template layout -->
+        <Border Padding="0,0,30,0" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Expander}},Path=ActualWidth}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" MinWidth="80"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Name="SenderText" FontWeight="bold" FontSize="12" Margin="0,0,4,0" TextWrapping="Wrap" Text="{Binding Sender}"
+                               Style="{StaticResource TextStyle}" Visibility="{Binding IsExpanded, ElementName=This, Converter={StaticResource BoolToVis}}"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Name="SenderTextShort" FontWeight="bold" FontSize="12" Margin="0,0,4,0" Text="{Binding Sender.Person.ShortName}"
+                               Style="{StaticResource TextStyle}" Visibility="{Binding IsExpanded, ElementName=This, Converter={StaticResource NotBoolToVis}}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Height="20" TextTrimming="CharacterEllipsis"  Style="{StaticResource TextStyle}"
+                               Visibility="{Binding IsExpanded, ElementName=This, Converter={StaticResource NotBoolToVis}}">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{converters:TextAnonymizeConverter}">
+                            <Binding Path="NewText" />
+                            <Binding ElementName="This" Path="Anonymize" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="Show details" FontStyle="Italic" Visibility="{Binding IsExpanded, ElementName=This, Converter={StaticResource NotBoolToVis}}"
+                               HorizontalAlignment="Right" Margin="8,0,8,0" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="Hide details" FontStyle="Italic" Visibility="{Binding IsExpanded, ElementName=This, Converter={StaticResource BoolToVis}}"
+                               HorizontalAlignment="Right" Margin="8,0,8,0" />
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding DateSent, Converter={x:Static glo:ObjectToStringConverter.Instance}}"  Style="{StaticResource TextStyle}" 
+                               HorizontalAlignment="Right"/>
+                <!--<Image Grid.Row="0" Grid.Column="3" Name="ReplyToIcon" Width="14" Height="14" Source="../Icons/ReplyLikely.png"
+                                Visibility="{Binding IsRepliedTo, Converter={StaticResource BoolToVis}, FallbackValue=Collapsed}" Margin="4,1,0,1"/>-->
+                <Image Grid.Row="0" Grid.Column="4" Name="FlagIcon" Width="14" Height="14" Source="{Binding Flag,Converter={converters:FlagToIconConverter}}"                              
+                               Margin="4,1,0,1"/>
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="ActionsBorder" Background="{Binding ElementName=This, Path=ActionsBorderBackground}" BorderThickness="0" CornerRadius="4">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--<TextBlock Text="Actions: " Foreground="DarkGray" Width="44" VerticalAlignment="Top"/>-->
+                        <TextBlock Grid.Column="1" Text="{Binding Converter={converters:MessageToActionsConverter}}" TextWrapping="Wrap"/>
+                    </Grid>
+                </Border>
+                <!--<TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Text="{Binding TrainValTest}"/>-->
+            </Grid>
+        </Border>
+    </Expander.Header>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Name="DetailsBlock" Visibility="{Binding ElementName=This, Path=DetailsBlockVisibility}" 
+                BorderThickness="0,0,0,1" BorderBrush="LightGray" >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="2">
+                    <TextBlock Text="From: " Foreground="DarkGray" Width="44"/>
+                    <TextBlock Text="{Binding Sender.Email.Value}" TextWrapping="Wrap"/>
+                </TextBlock>
+                <TextBlock Margin="2">
+                    <TextBlock Text="Subject: " Foreground="DarkGray" Width="44"/>
+                    <TextBlock TextWrapping="Wrap">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{converters:TextAnonymizeConverter}">
+                                <Binding Path="Subject" />
+                                <Binding ElementName="This" Path="Anonymize" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </TextBlock>
+                <TextBlock Margin="2">
+                    <TextBlock Text="To: " Foreground="DarkGray" Width="44"/>
+                    <TextBlock Text="{Binding SentTo, Converter={converters:ListToStringConverter}}" TextWrapping="Wrap"/>
+                </TextBlock>
+                <TextBlock Margin="2" x:Name="CopiedToBlock">
+                    <TextBlock Text="Cc: " Foreground="DarkGray" Width="44" VerticalAlignment="Top"/>
+                    <TextBlock Text="{Binding CopiedTo, Converter={converters:ListToStringConverter}}" TextWrapping="Wrap"/>
+                </TextBlock>
+                <!--<TextBlock Margin="2">
+                    <TextBlock Text="Actions: " Foreground="DarkGray" Width="44" VerticalAlignment="Top"/>
+                    <TextBlock Text="{Binding Converter={converters:MessageToActionsConverter}}" TextWrapping="Wrap"/>
+                </TextBlock>-->
+                <TextBlock Margin="2">
+                    <TextBlock Text="Folder: " Foreground="DarkGray" Width="44" VerticalAlignment="Top"/>
+                    <TextBlock Text="{Binding Folder}" TextWrapping="Wrap"/>
+                </TextBlock>
+            </StackPanel>
+        </Border>
+        <TextBlock Grid.Row="1" Margin="2" FontSize="12" TextWrapping="Wrap">
+            <TextBlock.Text>
+                <MultiBinding Converter="{converters:TextAnonymizeConverter}">
+                    <Binding Path="NewText" />
+                    <Binding ElementName="This" Path="Anonymize" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <Border Grid.Row="2" BorderThickness="1" BorderBrush="LightGray" Visibility="{Binding ElementName=This, Path=FeatureListVisibility}" CornerRadius="4" Margin="2">
+            <Expander IsExpanded="True">
+                <Expander.Header>
+                    <TextBlock Text="Features: " Margin="2" Foreground="DarkGray" />
+                </Expander.Header>
+                <DataGrid ItemsSource="{Binding ElementName=This, Path=FeatureListBoxItemsSource}" Margin="2" 
+                          HorizontalContentAlignment="Stretch" IsReadOnly="True" HeadersVisibility="All" />
+            </Expander>
+        </Border>
+    </Grid>
+</Expander>
