@@ -20,8 +20,8 @@ When targeting .NET Framework/Windows code produces visualizations using [Glo](G
 * The Visual Studio solution `Samples.sln` in the root of the repository contains a project with models for every chapter of the book and a few projects with the shared code and/or unit tests from the folders described below. Code layout in projects corresponding to the book chapters is similar and expanded only once.
 
 * src/
-    * 1\. A Murder Mystery/
-    * 2\. Assessing People's Skills/
+    * 1\. A Murder Mystery - code by Thomas Diethe and Dmitry Kats/
+    * 2\. Assessing People's Skills - code by Thomas Diethe and Dmitry Kats/
         * Data - input data in ObjML format
         * DataObjects - .NET types to hold the input data
         * Experiment - types that facilitate experimentation: types for metrics, results, and, possibly, other experiment-related data structures; a type that represents a single experiment and exposes a method to run it, type(s) that store multiple experiments together for comparison, etc.
@@ -29,10 +29,10 @@ When targeting .NET Framework/Windows code produces visualizations using [Glo](G
         * Views - additional [Glo](GLO.md) views needed for specific chapter. Not included in compilation when targeting .Net Core.
         * Contents.cs - static type that has constants for the name of the chapter and all the sections within the chapter
         * Program.cs
-    * 3\. Meeting Your Match
+    * 3\. Meeting Your Match - code by Thomas Diethe and Alexander Novikov
         * This chapter and the remaining chapters have similar layout to chapter 2.
-    * 4\. Uncluttering Your Inbox
-    * 5\. Making Recommendations
+    * 4\. Uncluttering Your Inbox - code by Thomas Diethe and Dmitry Kats
+    * 5\. Making Recommendations - code by Yordan Zaykov and Alexander Novikov
     * MBMLCommon/ -  a number of utility classes shared by different projects including
         * Outputter.cs - class that encapsulates outputting objects, so that the code for chapters can output results in a platform-agnostic way. Also exposes methods for saving outputs to .objml files. 
     * MBMLViews - additional [Glo](GLO.md) views shared among the chapters.
