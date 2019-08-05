@@ -16,8 +16,6 @@ namespace MeetingYourMatch
     using MeetingYourMatch.Items;
     using MeetingYourMatch.Models;
 
-    using TeamCollection = Microsoft.Research.Glo.ObjectModel.KeyedCollectionWithFunc<string, Items.Team>;
-
     /// <summary>
     /// The halo variant.
     /// </summary>
@@ -61,7 +59,7 @@ namespace MeetingYourMatch
         /// </summary>
         public Inputs()
         {
-            this.Games = new KeyedCollectionWithFunc<string, TGame>(ia => ia.Id);
+            Games = new KeyedCollectionWithFunc<string, TGame>(ia => ia.Id);
         }
 
         /// <summary>
