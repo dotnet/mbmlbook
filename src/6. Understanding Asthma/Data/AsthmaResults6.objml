@@ -1,0 +1,1467 @@
+<Dictionary2 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" xmlns:x="johnwinn.org/serialization1.0">
+  <x:key x:class="System.String">AllergenSensitizationPlots</x:key>
+  <Dictionary2 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+    <x:key x:class="System.String">598</x:key>
+    <Dictionary2 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+        <x:key x:class="System.String">Mite</x:key>
+        <Double x:namespace="System">589</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>590</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>593</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>585</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>591</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>569</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>9</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>5</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>9</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>6</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>19</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>10</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">226</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>91</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>186</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>194</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>81</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>221</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>209</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>34</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>36</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>32</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>58</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>13</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>101</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>87</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>4</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">127</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>23</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>16</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>38</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>8</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>113</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>70</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>17</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>21</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>15</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>39</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>11</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>13</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>87</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>90</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>74</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>80</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>44</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">102</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>77</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>85</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>98</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>91</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>100</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>102</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>25</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>16</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>11</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">0</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">0_1</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+  </Dictionary2>
+  <x:key x:class="System.String">YearSensitizationPlots</x:key>
+  <Dictionary2>
+    <x:key x:class="System.String">598</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>585</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>578</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>574</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>570</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>12</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>20</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>23</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>28</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">226</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>215</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>118</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>79</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>19</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>11</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>87</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>118</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>118</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>21</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>29</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>89</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">127</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>67</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>55</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>23</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>12</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>9</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>5</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>101</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>115</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>118</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">102</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>96</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>96</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>94</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>75</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>6</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>5</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>8</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>27</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">0</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">0_1</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">&lt;1 sensitization</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">1-2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">&gt;2 sensitizations</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">1</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">3</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">5</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">8</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+  </Dictionary2>
+  <x:key x:class="System.String">SensitizationPlots</x:key>
+  <Dictionary2>
+    <x:key x:class="System.String">598</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Age 1</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>9</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 3</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>9</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>8</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>6</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 5</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>10</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>5</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>13</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 8</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>5</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>8</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>26</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">226</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Age 1</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>15</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 3</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>78</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>6</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>64</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>3</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 5</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>104</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>14</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>99</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>1</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 8</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>128</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>33</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>31</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>143</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>7</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">127</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Age 1</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>4</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>47</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 3</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>87</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>58</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>73</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>53</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>38</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 5</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>88</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>98</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>79</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>87</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>13</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>39</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 8</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>95</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>98</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>74</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>121</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>6</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>27</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">102</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Age 1</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>6</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 3</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>3</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 5</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>5</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>5</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>2</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 8</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>25</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>17</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>1</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>15</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>3</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">0</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Age 1</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 3</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 5</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 8</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+    <x:key x:class="System.String">0_1</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Age 1</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 3</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 5</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+      <x:key x:class="System.String">Age 8</x:key>
+      <Dictionary2>
+        <x:key x:class="System.String">Mite</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Cat</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Dog</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Pollen</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Milk</x:key>
+        <Double>0</Double>
+        <x:key x:class="System.String">Egg</x:key>
+        <Double>0</Double>
+      </Dictionary2>
+    </Dictionary2>
+  </Dictionary2>
+  <x:key x:class="System.String">ProbabilityGainingSensitivity</x:key>
+  <Dictionary21 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Research.Glo.Views.PointWithBounds[], GloObject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+    <x:key x:class="System.String">598</x:key>
+    <Dictionary2 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Research.Glo.Views.PointWithBounds[], GloObject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]">
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array x:class="Microsoft.Research.Glo.Views.PointWithBounds[]">
+        <PointWithBounds Upper="0.0348" Lower="0.01359" X="1" Y="0.026065378685669029" />
+        <PointWithBounds Upper="0.05258" Lower="0.02869" X="3" Y="0.041990297108763862" />
+        <PointWithBounds Upper="0.0633" Lower="0.03851" X="5" Y="0.052049152589414678" />
+        <PointWithBounds Upper="0.06984" Lower="0.04177" X="8" Y="0.057137981105129819" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.04615" Lower="0.02122" X="1" Y="0.035500612416105533" />
+        <PointWithBounds Upper="0.02272" Lower="0.00819" X="3" Y="0.016859376722825926" />
+        <PointWithBounds Upper="0.03857" Lower="0.01977" X="5" Y="0.030359538387217409" />
+        <PointWithBounds Upper="0.04491" Lower="0.02326" X="8" Y="0.035429837643821585" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03754" Lower="0.01495" X="1" Y="0.028196939167987781" />
+        <PointWithBounds Upper="0.02104" Lower="0.00733" X="3" Y="0.015551664394772379" />
+        <PointWithBounds Upper="0.01751" Lower="0.0059" X="5" Y="0.01290483332951379" />
+        <PointWithBounds Upper="0.03669" Lower="0.0176" X="8" Y="0.028474033972887409" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.05015" Lower="0.02282" X="1" Y="0.038485486161514058" />
+        <PointWithBounds Upper="0.04896" Lower="0.02605" X="3" Y="0.038867326964225894" />
+        <PointWithBounds Upper="0.06247" Lower="0.03761" X="5" Y="0.051215691510145309" />
+        <PointWithBounds Upper="0.07058" Lower="0.04226" X="8" Y="0.057762478542804752" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03464" Lower="0.01359" X="1" Y="0.025965835305681185" />
+        <PointWithBounds Upper="0.0182" Lower="0.00603" X="3" Y="0.013387939353217524" />
+        <PointWithBounds Upper="0.01938" Lower="0.00687" X="5" Y="0.014357242933365355" />
+        <PointWithBounds Upper="0.0264" Lower="0.01072" X="8" Y="0.019903886516221495" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.06646" Lower="0.03336" X="1" Y="0.0520117102393448" />
+        <PointWithBounds Upper="0.03151" Lower="0.0135" X="3" Y="0.023950918923096295" />
+        <PointWithBounds Upper="0.03395" Lower="0.01655" X="5" Y="0.026439842064543483" />
+        <PointWithBounds Upper="0.04769" Lower="0.02532" X="8" Y="0.0378396412873751" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">226</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.08306" Lower="0.03928" X="1" Y="0.064122759876174037" />
+        <PointWithBounds Upper="0.52953" Lower="0.46606" X="3" Y="0.49780082497617212" />
+        <PointWithBounds Upper="0.15958" Lower="0.10256" X="5" Y="0.13316078470355983" />
+        <PointWithBounds Upper="0.37677" Lower="0.2959" X="8" Y="0.33728028540863" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03064" Lower="0.00976" X="1" Y="0.022425278447397366" />
+        <PointWithBounds Upper="0.06955" Lower="0.03846" X="3" Y="0.0556996996203057" />
+        <PointWithBounds Upper="0.14422" Lower="0.10121" X="5" Y="0.12400504488872974" />
+        <PointWithBounds Upper="0.25821" Lower="0.20181" X="8" Y="0.23097017352031932" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.0345" Lower="0.01259" X="1" Y="0.025609470295543654" />
+        <PointWithBounds Upper="0.03762" Lower="0.01721" X="3" Y="0.028922000960370925" />
+        <PointWithBounds Upper="0.03665" Lower="0.01661" X="5" Y="0.028128639821734351" />
+        <PointWithBounds Upper="0.24326" Lower="0.19039" X="8" Y="0.21774990948807477" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.07748" Lower="0.02945" X="1" Y="0.057610748531380832" />
+        <PointWithBounds Upper="0.42222" Lower="0.36141" X="3" Y="0.3921488658940403" />
+        <PointWithBounds Upper="0.14619" Lower="0.09588" X="5" Y="0.12283151014021622" />
+        <PointWithBounds Upper="0.48559" Lower="0.40194" X="8" Y="0.44407897787768025" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.02981" Lower="0.00954" X="1" Y="0.021830140539265339" />
+        <PointWithBounds Upper="0.01758" Lower="0.00526" X="3" Y="0.012816514484355244" />
+        <PointWithBounds Upper="0.02065" Lower="0.0072" X="5" Y="0.015267794115674631" />
+        <PointWithBounds Upper="0.04269" Lower="0.02094" X="8" Y="0.033278469165978118" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.23614" Lower="0.16724" X="1" Y="0.20342805559434535" />
+        <PointWithBounds Upper="0.02832" Lower="0.00951" X="3" Y="0.020840497402076559" />
+        <PointWithBounds Upper="0.03378" Lower="0.0156" X="5" Y="0.026019541142879781" />
+        <PointWithBounds Upper="0.04093" Lower="0.01943" X="8" Y="0.0316905715724359" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">127</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.15614" Lower="0.09999" X="1" Y="0.13014945460311297" />
+        <PointWithBounds Upper="0.75052" Lower="0.68376" X="3" Y="0.71619934312745692" />
+        <PointWithBounds Upper="0.27915" Lower="0.18042" X="5" Y="0.23268990428911851" />
+        <PointWithBounds Upper="0.48404" Lower="0.35706" X="8" Y="0.42157017891081622" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.18319" Lower="0.10367" X="1" Y="0.14704852696206727" />
+        <PointWithBounds Upper="0.63309" Lower="0.55098" X="3" Y="0.591526194251789" />
+        <PointWithBounds Upper="0.64057" Lower="0.53336" X="5" Y="0.58616107816258356" />
+        <PointWithBounds Upper="0.42662" Lower="0.29564" X="8" Y="0.36312491591823243" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.16193" Lower="0.09355" X="1" Y="0.13083303234611413" />
+        <PointWithBounds Upper="0.6102" Lower="0.53514" X="3" Y="0.57233914313212653" />
+        <PointWithBounds Upper="0.2504" Lower="0.16472" X="5" Y="0.21012668497627254" />
+        <PointWithBounds Upper="0.23429" Lower="0.14389" X="8" Y="0.19233632600813849" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.10103" Lower="0.03842" X="1" Y="0.074969426957755173" />
+        <PointWithBounds Upper="0.58251" Lower="0.50061" X="3" Y="0.54133889287383952" />
+        <PointWithBounds Upper="0.52847" Lower="0.42066" X="5" Y="0.47479751181875474" />
+        <PointWithBounds Upper="0.88481" Lower="0.78946" X="8" Y="0.83273693789290959" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.12776" Lower="0.0658" X="1" Y="0.10030199919210067" />
+        <PointWithBounds Upper="0.04443" Lower="0.01935" X="3" Y="0.033838762763133648" />
+        <PointWithBounds Upper="0.1253" Lower="0.08272" X="5" Y="0.10554566985063281" />
+        <PointWithBounds Upper="0.03336" Lower="0.01207" X="8" Y="0.024744679667111216" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.53281" Lower="0.45146" X="1" Y="0.49217322260441182" />
+        <PointWithBounds Upper="0.09234" Lower="0.04258" X="3" Y="0.070883519112948434" />
+        <PointWithBounds Upper="0.20407" Lower="0.14073" X="5" Y="0.17422071218341054" />
+        <PointWithBounds Upper="0.05535" Lower="0.02276" X="8" Y="0.041720892846047554" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">102</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03479" Lower="0.01359" X="1" Y="0.026061836305140307" />
+        <PointWithBounds Upper="0.0526" Lower="0.02871" X="3" Y="0.042012213159589189" />
+        <PointWithBounds Upper="0.06362" Lower="0.03876" X="5" Y="0.052333986001228912" />
+        <PointWithBounds Upper="0.07005" Lower="0.04193" X="8" Y="0.057322053795352004" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.04621" Lower="0.02126" X="1" Y="0.03554536053409444" />
+        <PointWithBounds Upper="0.02277" Lower="0.00822" X="3" Y="0.01689573437042767" />
+        <PointWithBounds Upper="0.03858" Lower="0.01978" X="5" Y="0.030372338556237118" />
+        <PointWithBounds Upper="0.045" Lower="0.02332" X="8" Y="0.035501987296042994" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03754" Lower="0.01495" X="1" Y="0.028191747203421495" />
+        <PointWithBounds Upper="0.02106" Lower="0.00734" X="3" Y="0.015567383191640046" />
+        <PointWithBounds Upper="0.01749" Lower="0.00589" X="5" Y="0.012889097643677306" />
+        <PointWithBounds Upper="0.03669" Lower="0.01761" X="8" Y="0.0284787312685437" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.05009" Lower="0.02277" X="1" Y="0.038435629869052391" />
+        <PointWithBounds Upper="0.04887" Lower="0.02598" X="3" Y="0.038785673770278355" />
+        <PointWithBounds Upper="0.06279" Lower="0.03786" X="5" Y="0.051501392431941719" />
+        <PointWithBounds Upper="0.07066" Lower="0.04232" X="8" Y="0.057826807075581119" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03464" Lower="0.01359" X="1" Y="0.025963541273166121" />
+        <PointWithBounds Upper="0.01821" Lower="0.00603" X="3" Y="0.01339781148191059" />
+        <PointWithBounds Upper="0.01937" Lower="0.00686" X="5" Y="0.01434790663366625" />
+        <PointWithBounds Upper="0.0264" Lower="0.01072" X="8" Y="0.019903338950083196" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.0664" Lower="0.03332" X="1" Y="0.051959380370153484" />
+        <PointWithBounds Upper="0.03148" Lower="0.01349" X="3" Y="0.0239318051073358" />
+        <PointWithBounds Upper="0.03388" Lower="0.01651" X="5" Y="0.026383246232889603" />
+        <PointWithBounds Upper="0.0477" Lower="0.02533" X="8" Y="0.037849286754882028" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">0</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03479" Lower="0.01359" X="1" Y="0.026064716056070442" />
+        <PointWithBounds Upper="0.05258" Lower="0.02869" X="3" Y="0.041994494836345896" />
+        <PointWithBounds Upper="0.06336" Lower="0.03856" X="5" Y="0.0521027650243955" />
+        <PointWithBounds Upper="0.06988" Lower="0.0418" X="8" Y="0.057173076909529726" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.04616" Lower="0.02123" X="1" Y="0.035509044029564854" />
+        <PointWithBounds Upper="0.02273" Lower="0.0082" X="3" Y="0.016866206507667351" />
+        <PointWithBounds Upper="0.03857" Lower="0.01977" X="5" Y="0.030361865172282669" />
+        <PointWithBounds Upper="0.04493" Lower="0.02327" X="8" Y="0.035443370034041577" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03754" Lower="0.01495" X="1" Y="0.028195978374375888" />
+        <PointWithBounds Upper="0.02104" Lower="0.00734" X="3" Y="0.01555463283248905" />
+        <PointWithBounds Upper="0.01751" Lower="0.0059" X="5" Y="0.012901796000774133" />
+        <PointWithBounds Upper="0.03669" Lower="0.0176" X="8" Y="0.028474830325595848" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.05013" Lower="0.02281" X="1" Y="0.038476005518303741" />
+        <PointWithBounds Upper="0.04894" Lower="0.02604" X="3" Y="0.038851402815058375" />
+        <PointWithBounds Upper="0.06253" Lower="0.03765" X="5" Y="0.051269389743660618" />
+        <PointWithBounds Upper="0.0706" Lower="0.04227" X="8" Y="0.05777468140418883" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03464" Lower="0.01359" X="1" Y="0.02596541268347945" />
+        <PointWithBounds Upper="0.0182" Lower="0.00603" X="3" Y="0.013389803286750122" />
+        <PointWithBounds Upper="0.01938" Lower="0.00687" X="5" Y="0.014355480800349128" />
+        <PointWithBounds Upper="0.0264" Lower="0.01072" X="8" Y="0.019903780158017258" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.06645" Lower="0.03335" X="1" Y="0.052001890426807584" />
+        <PointWithBounds Upper="0.0315" Lower="0.0135" X="3" Y="0.023947274812066145" />
+        <PointWithBounds Upper="0.03394" Lower="0.01654" X="5" Y="0.026429007624819489" />
+        <PointWithBounds Upper="0.04769" Lower="0.02532" X="8" Y="0.037841472506995488" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">0_1</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03479" Lower="0.01359" X="1" Y="0.026065102406444007" />
+        <PointWithBounds Upper="0.05258" Lower="0.02869" X="3" Y="0.041991250446232871" />
+        <PointWithBounds Upper="0.06331" Lower="0.03852" X="5" Y="0.05206377321188619" />
+        <PointWithBounds Upper="0.06985" Lower="0.04178" X="8" Y="0.057148939422436387" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.04615" Lower="0.02123" X="1" Y="0.035502795443264935" />
+        <PointWithBounds Upper="0.02272" Lower="0.0082" X="3" Y="0.016861256449277023" />
+        <PointWithBounds Upper="0.03857" Lower="0.01977" X="5" Y="0.030360342046724574" />
+        <PointWithBounds Upper="0.04492" Lower="0.02327" X="8" Y="0.035434045506716208" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03754" Lower="0.01495" X="1" Y="0.028196672098246337" />
+        <PointWithBounds Upper="0.02104" Lower="0.00733" X="3" Y="0.01555247123093694" />
+        <PointWithBounds Upper="0.01751" Lower="0.0059" X="5" Y="0.012903885339688838" />
+        <PointWithBounds Upper="0.03669" Lower="0.0176" X="8" Y="0.02847444890288485" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.05014" Lower="0.02281" X="1" Y="0.038482556367891115" />
+        <PointWithBounds Upper="0.04896" Lower="0.02605" X="3" Y="0.0388626472903194" />
+        <PointWithBounds Upper="0.06249" Lower="0.03762" X="5" Y="0.051233309812702112" />
+        <PointWithBounds Upper="0.07059" Lower="0.04226" X="8" Y="0.057767080936609823" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.03464" Lower="0.01359" X="1" Y="0.025965609014059966" />
+        <PointWithBounds Upper="0.0182" Lower="0.00603" X="3" Y="0.013388457004920308" />
+        <PointWithBounds Upper="0.01938" Lower="0.00687" X="5" Y="0.014356760802077762" />
+        <PointWithBounds Upper="0.0264" Lower="0.01072" X="8" Y="0.019903979898295475" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.06646" Lower="0.03336" X="1" Y="0.0520093053099058" />
+        <PointWithBounds Upper="0.03151" Lower="0.0135" X="3" Y="0.023949796321002716" />
+        <PointWithBounds Upper="0.03394" Lower="0.01655" X="5" Y="0.026436410891145089" />
+        <PointWithBounds Upper="0.04769" Lower="0.02532" X="8" Y="0.037839709213772" />
+      </PointWithBounds-array>
+    </Dictionary2>
+  </Dictionary21>
+  <x:key x:class="System.String">ProbabilityRetainingSensitivity</x:key>
+  <Dictionary21>
+    <x:key x:class="System.String">598</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.57811" Lower="0.23479" X="3" Y="0.4135176810499317" />
+        <PointWithBounds Upper="0.54388" Lower="0.30062" X="5" Y="0.42558744549791094" />
+        <PointWithBounds Upper="0.77619" Lower="0.56732" X="8" Y="0.66558177616170011" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.54855" Lower="0.24666" X="3" Y="0.40400775060234556" />
+        <PointWithBounds Upper="0.51064" Lower="0.20735" X="5" Y="0.368185299146904" />
+        <PointWithBounds Upper="0.69448" Lower="0.39818" X="8" Y="0.54359770748860081" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.47004" Lower="0.16045" X="3" Y="0.32835900553833991" />
+        <PointWithBounds Upper="0.53389" Lower="0.19183" X="5" Y="0.37351386716271273" />
+        <PointWithBounds Upper="0.70214" Lower="0.30836" X="8" Y="0.5047836456479059" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.58361" Lower="0.29139" X="3" Y="0.44112745146147714" />
+        <PointWithBounds Upper="0.69501" Lower="0.45772" X="5" Y="0.57322850804813485" />
+        <PointWithBounds Upper="0.6895" Lower="0.4799" X="8" Y="0.58189836432331932" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.51711" Lower="0.19" X="3" Y="0.36432079769968012" />
+        <PointWithBounds Upper="0.7252" Lower="0.3585" X="5" Y="0.53845582679936621" />
+        <PointWithBounds Upper="0.57211" Lower="0.20437" X="8" Y="0.39763094898618084" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.34584" Lower="0.12566" X="3" Y="0.2483740050397345" />
+        <PointWithBounds Upper="0.47191" Lower="0.18821" X="5" Y="0.3403726534136805" />
+        <PointWithBounds Upper="0.74973" Lower="0.44973" X="8" Y="0.59356557554379119" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">226</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.6972" Lower="0.46091" X="3" Y="0.57582873089029341" />
+        <PointWithBounds Upper="0.82239" Lower="0.75305" X="5" Y="0.78608389586072147" />
+        <PointWithBounds Upper="0.95446" Lower="0.90941" X="8" Y="0.92915996063726958" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.65976" Lower="0.26431" X="3" Y="0.46542643600717043" />
+        <PointWithBounds Upper="0.33444" Lower="0.13119" X="5" Y="0.24399119698559849" />
+        <PointWithBounds Upper="0.42576" Lower="0.25869" X="8" Y="0.34591344944177393" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.62982" Lower="0.26752" X="3" Y="0.45277275779293036" />
+        <PointWithBounds Upper="0.60995" Lower="0.2908" X="5" Y="0.45366991168659238" />
+        <PointWithBounds Upper="0.6123" Lower="0.32285" X="8" Y="0.46941088938673248" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.50613" Lower="0.26716" X="3" Y="0.39148574329331642" />
+        <PointWithBounds Upper="0.95531" Lower="0.90813" X="5" Y="0.92868979536788754" />
+        <PointWithBounds Upper="0.977" Lower="0.94191" X="8" Y="0.95648170046577285" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.53059" Lower="0.17041" X="3" Y="0.36311106223871176" />
+        <PointWithBounds Upper="0.72168" Lower="0.32219" X="5" Y="0.51995455434608573" />
+        <PointWithBounds Upper="0.6865" Lower="0.28235" X="8" Y="0.48584984043572044" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.29393" Lower="0.17293" X="3" Y="0.23764042719210673" />
+        <PointWithBounds Upper="0.41475" Lower="0.20342" X="5" Y="0.31631203727222545" />
+        <PointWithBounds Upper="0.82094" Lower="0.56001" X="8" Y="0.6800884731837844" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">127</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.34063" Lower="0.17593" X="3" Y="0.26470646424412958" />
+        <PointWithBounds Upper="0.96816" Lower="0.93285" X="5" Y="0.94809238397188433" />
+        <PointWithBounds Upper="0.94923" Lower="0.9076" X="8" Y="0.92617900086588978" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.69778" Lower="0.49767" X="3" Y="0.59473076626419108" />
+        <PointWithBounds Upper="0.87797" Lower="0.81363" X="5" Y="0.84362917724606545" />
+        <PointWithBounds Upper="0.90831" Lower="0.85448" X="8" Y="0.87929266141559925" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.80624" Lower="0.63549" X="3" Y="0.7148772619757604" />
+        <PointWithBounds Upper="0.90321" Lower="0.84479" X="5" Y="0.87169862728920378" />
+        <PointWithBounds Upper="0.88919" Lower="0.82829" X="8" Y="0.85656715260013516" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.65274" Lower="0.36204" X="3" Y="0.50697034674984509" />
+        <PointWithBounds Upper="0.93228" Lower="0.87583" X="5" Y="0.90109824557940832" />
+        <PointWithBounds Upper="0.9756" Lower="0.94534" X="8" Y="0.95820655427625034" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.1861" Lower="0.0527" X="3" Y="0.13184476664704423" />
+        <PointWithBounds Upper="0.83596" Lower="0.55127" X="5" Y="0.6813823463766997" />
+        <PointWithBounds Upper="0.54777" Lower="0.34908" X="8" Y="0.44994642281307129" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.69045" Lower="0.59185" X="3" Y="0.63998058060326191" />
+        <PointWithBounds Upper="0.72393" Lower="0.61944" X="5" Y="0.67002860954151666" />
+        <PointWithBounds Upper="0.6538" Lower="0.53707" X="8" Y="0.59438513456538444" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">102</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.57823" Lower="0.23486" X="3" Y="0.41360330897533448" />
+        <PointWithBounds Upper="0.54428" Lower="0.30104" X="5" Y="0.42597764030471708" />
+        <PointWithBounds Upper="0.7767" Lower="0.56842" X="8" Y="0.6663770360199458" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.54865" Lower="0.24685" X="3" Y="0.40414334123168805" />
+        <PointWithBounds Upper="0.50978" Lower="0.2069" X="5" Y="0.3675621281025544" />
+        <PointWithBounds Upper="0.69452" Lower="0.39826" X="8" Y="0.54365390984164919" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.47027" Lower="0.16059" X="3" Y="0.32853386550349684" />
+        <PointWithBounds Upper="0.53377" Lower="0.19185" X="5" Y="0.37346499819602041" />
+        <PointWithBounds Upper="0.70257" Lower="0.30869" X="8" Y="0.5051314524553755" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.58365" Lower="0.2912" X="3" Y="0.44106342935102438" />
+        <PointWithBounds Upper="0.69443" Lower="0.4569" X="5" Y="0.57255151074059818" />
+        <PointWithBounds Upper="0.69163" Lower="0.48244" X="8" Y="0.58416241898151444" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.51728" Lower="0.19013" X="3" Y="0.36445633642729697" />
+        <PointWithBounds Upper="0.72539" Lower="0.35881" X="5" Y="0.53868708152856148" />
+        <PointWithBounds Upper="0.57243" Lower="0.20464" X="8" Y="0.397899338319451" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.34614" Lower="0.12577" X="3" Y="0.24858282305787013" />
+        <PointWithBounds Upper="0.47185" Lower="0.18807" X="5" Y="0.34028519010304364" />
+        <PointWithBounds Upper="0.74939" Lower="0.44904" X="8" Y="0.5930712605377243" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">0</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.57814" Lower="0.2348" X="3" Y="0.41353386552542309" />
+        <PointWithBounds Upper="0.54396" Lower="0.3007" X="5" Y="0.42566088918285017" />
+        <PointWithBounds Upper="0.77629" Lower="0.56753" X="8" Y="0.665731975435381" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.54857" Lower="0.24669" X="3" Y="0.40403326933418787" />
+        <PointWithBounds Upper="0.51048" Lower="0.20726" X="5" Y="0.36806785487227234" />
+        <PointWithBounds Upper="0.69449" Lower="0.3982" X="8" Y="0.54360873931831433" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.47009" Lower="0.16047" X="3" Y="0.32839188846280193" />
+        <PointWithBounds Upper="0.53387" Lower="0.19183" X="5" Y="0.37350454490660334" />
+        <PointWithBounds Upper="0.70222" Lower="0.30842" X="8" Y="0.50485026180526038" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.58362" Lower="0.29136" X="3" Y="0.44111511939494064" />
+        <PointWithBounds Upper="0.69489" Lower="0.45756" X="5" Y="0.57309690073227715" />
+        <PointWithBounds Upper="0.6899" Lower="0.48038" X="8" Y="0.58232833486511015" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.51714" Lower="0.19002" X="3" Y="0.364346368483362" />
+        <PointWithBounds Upper="0.72523" Lower="0.35856" X="5" Y="0.53849947751357574" />
+        <PointWithBounds Upper="0.57217" Lower="0.20442" X="8" Y="0.3976813781582389" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.34589" Lower="0.12568" X="3" Y="0.24841314679324525" />
+        <PointWithBounds Upper="0.4719" Lower="0.18818" X="5" Y="0.34035561398018627" />
+        <PointWithBounds Upper="0.74966" Lower="0.4496" X="8" Y="0.59347057156248573" />
+      </PointWithBounds-array>
+    </Dictionary2>
+    <x:key x:class="System.String">0_1</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Mite</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.57812" Lower="0.23479" X="3" Y="0.41352277725341713" />
+        <PointWithBounds Upper="0.5439" Lower="0.30064" X="5" Y="0.42560954476813434" />
+        <PointWithBounds Upper="0.77622" Lower="0.56738" X="8" Y="0.6656205413108488" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Cat</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.54855" Lower="0.24667" X="3" Y="0.40401563512944616" />
+        <PointWithBounds Upper="0.5106" Lower="0.20732" X="5" Y="0.36815321943465518" />
+        <PointWithBounds Upper="0.69448" Lower="0.39819" X="8" Y="0.54360197938089749" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Dog</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.47005" Lower="0.16045" X="3" Y="0.32836772783124829" />
+        <PointWithBounds Upper="0.53389" Lower="0.19183" X="5" Y="0.37351297437133163" />
+        <PointWithBounds Upper="0.70216" Lower="0.30838" X="8" Y="0.50480365168904906" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Pollen</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.58361" Lower="0.29138" X="3" Y="0.44112400097084853" />
+        <PointWithBounds Upper="0.69497" Lower="0.45767" X="5" Y="0.57318892528417675" />
+        <PointWithBounds Upper="0.68962" Lower="0.48005" X="8" Y="0.58203459555752546" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Milk</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.51712" Lower="0.19001" X="3" Y="0.36432866001499004" />
+        <PointWithBounds Upper="0.72521" Lower="0.35851" X="5" Y="0.53846781195107229" />
+        <PointWithBounds Upper="0.57213" Lower="0.20438" X="8" Y="0.39764448033032246" />
+      </PointWithBounds-array>
+      <x:key x:class="System.String">Egg</x:key>
+      <PointWithBounds-array>
+        <PointWithBounds Upper="0.34585" Lower="0.12566" X="3" Y="0.24838442313449277" />
+        <PointWithBounds Upper="0.4719" Lower="0.1882" X="5" Y="0.34036623306566732" />
+        <PointWithBounds Upper="0.74971" Lower="0.44969" X="8" Y="0.59353475080809559" />
+      </PointWithBounds-array>
+    </Dictionary2>
+  </Dictionary21>
+  <x:key x:class="System.String">ConditionalProbsOfPositiveTest</x:key>
+  <Dictionary22 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.IList, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+    <x:key x:class="System.String"></x:key>
+    <List1 x:class="System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+      <String x:namespace="System">Prob. of Pos. Skin Test</String>
+      <String>Prob. of Pos. IgE Test</String>
+    </List1>
+    <x:key x:class="System.String">If Sensitized</x:key>
+    <List1>
+      <String>60.5%±0.7%</String>
+      <String>88.7%±0.7%</String>
+    </List1>
+    <x:key x:class="System.String">If Not Sensitized</x:key>
+    <List1>
+      <String>0.0%±0.01%</String>
+      <String>1.1%±0.1%</String>
+    </List1>
+  </Dictionary22>
+  <x:key x:class="System.String">PercentageChildrenWithOutcome</x:key>
+  <Dictionary23 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+    <x:key x:class="System.String">Class 0</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Asthma</x:key>
+      <Double>3.3444816053511706</Double>
+    </Dictionary2>
+    <x:key x:class="System.String">Class 1</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Asthma</x:key>
+      <Double>7.0796460176991154</Double>
+    </Dictionary2>
+    <x:key x:class="System.String">Class 2</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Asthma</x:key>
+      <Double>37.00787401574803</Double>
+    </Dictionary2>
+    <x:key x:class="System.String">Class 3</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Asthma</x:key>
+      <Double>1.9607843137254901</Double>
+    </Dictionary2>
+  </Dictionary23>
+  <x:key x:class="System.String">PlusMinusChildrenWithOutcome</x:key>
+  <Dictionary24 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+    <x:key x:class="System.String">Class 0</x:key>
+    <Dictionary2 x:class="System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+      <x:key x:class="System.String">Asthma</x:key>
+      <String x:namespace="System">3.5%±0.5%</String>
+    </Dictionary2>
+    <x:key x:class="System.String">Class 1</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Asthma</x:key>
+      <String>7.4%±1.2%</String>
+    </Dictionary2>
+    <x:key x:class="System.String">Class 2</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Asthma</x:key>
+      <String>37.2%±2.9%</String>
+    </Dictionary2>
+    <x:key x:class="System.String">Class 3</x:key>
+    <Dictionary2>
+      <x:key x:class="System.String">Asthma</x:key>
+      <String>2.7%±1%</String>
+    </Dictionary2>
+  </Dictionary24>
+</Dictionary2>

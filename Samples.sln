@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnclutteringYourInbox", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MakingRecommendations", "src\5. Making Recommendations\MakingRecommendations.csproj", "{998810E8-E9EA-4930-9160-C34FF78C1B75}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnderstandingAsthma", "src\6. Understanding Asthma\UnderstandingAsthma.csproj", "{66E05F45-47DD-4A4B-8FAD-563AC5ADC6C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{998810E8-E9EA-4930-9160-C34FF78C1B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{998810E8-E9EA-4930-9160-C34FF78C1B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{998810E8-E9EA-4930-9160-C34FF78C1B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66E05F45-47DD-4A4B-8FAD-563AC5ADC6C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66E05F45-47DD-4A4B-8FAD-563AC5ADC6C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66E05F45-47DD-4A4B-8FAD-563AC5ADC6C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66E05F45-47DD-4A4B-8FAD-563AC5ADC6C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

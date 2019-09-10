@@ -33,6 +33,7 @@ When targeting .NET Framework/Windows code produces visualizations using [Glo](G
         * This chapter and the remaining chapters have similar layout to chapter 2.
     * 4\. Uncluttering Your Inbox - code by Thomas Diethe and Dmitry Kats
     * 5\. Making Recommendations - code by Yordan Zaykov and Alexander Novikov
+    * 6\. Understanding Asthma - code by John Guiver and  Dmitry Kats
     * MBMLCommon/ -  a number of utility classes shared by different projects including
         * Outputter.cs - class that encapsulates outputting objects, so that the code for chapters can output results in a platform-agnostic way. Also exposes methods for saving outputs to .objml files. 
     * MBMLViews - additional [Glo](GLO.md) views shared among the chapters.
