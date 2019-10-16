@@ -192,7 +192,7 @@ namespace AssessingPeoplesSkills.Models
             this.Engine.NumberOfIterations = 5;
             this.Engine.MessageUpdated += this.EngineMessageUpdated;
 
-            // Engine.Compiler.GivePriorityTo(typeof(MicrosoftResearch.Infer.Factors.ReplicateOp_NoDivide));
+            Engine.Compiler.GivePriorityTo(typeof(Microsoft.ML.Probabilistic.Factors.ReplicateOp_NoDivide));
             results.SkillsPosteriors = new Bernoulli[this.NumberOfPeople][];
             for (int p = 0; p < this.NumberOfPeople; p++)
             {
