@@ -2,6 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.IO;
+using MeetingYourMatch.Data;
+using Microsoft.Research.Glo;
+
 namespace MeetingYourMatch
 {
     using System;
@@ -227,7 +231,7 @@ namespace MeetingYourMatch
         {
             AnnounceExperiment("HeadToHead");
 
-            var inputs = FileUtils.Load<Inputs<TwoPlayerGame>>(DataPath, "Halo2-HeadToHead");
+            var inputs = Halo2Fetcher.LoadByGameType<TwoPlayerGame>(Path.Combine(DataPath, "HeadToHead.csv"));
 
             // We know that there are issues with players Gamer01266 and Gamer00296
             inputs.Games =
@@ -407,7 +411,8 @@ namespace MeetingYourMatch
         /// </summary>
         public void FreeForAll()
         {
-            var inputs = FileUtils.Load<Inputs<MultiPlayerGame>>(DataPath, "Halo2-FreeForAll");
+            var inputs = Halo2Fetcher.LoadByGameType<MultiPlayerGame>(Path.Combine(DataPath, "FreeForAll.csv"));
+
             outputter.Out(inputs,
                 Contents.S4ExtensionsToTheCoreModel.NumberedName,
                 "Halo2-FreeForAll",
@@ -441,7 +446,7 @@ namespace MeetingYourMatch
         /// </summary>
         public void SmallTeams()
         {
-            var inputs = FileUtils.Load<Inputs<TeamGame>>(DataPath, "Halo2-SmallTeam");
+            var inputs = Halo2Fetcher.LoadByGameType<TeamGame>(Path.Combine(DataPath, "SmallTeam.csv"));
 
             outputter.Out(inputs,
                 Contents.S4ExtensionsToTheCoreModel.NumberedName,
@@ -495,7 +500,8 @@ namespace MeetingYourMatch
         /// </summary>
         public void LargeTeams()
         {
-            var inputs = FileUtils.Load<Inputs<TeamGame>>(DataPath, "Halo2-LargeTeam");
+            var inputs = Halo2Fetcher.LoadByGameType<TeamGame>(Path.Combine(DataPath, "LargeTeam.csv"));
+
             outputter.Out(inputs,
                 Contents.S4ExtensionsToTheCoreModel.NumberedName,
                 "Halo2-LargeTeams",
