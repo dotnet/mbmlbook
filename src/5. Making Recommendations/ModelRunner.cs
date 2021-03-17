@@ -62,10 +62,10 @@ namespace MakingRecommendations
         {
             // In this chapter Infer.NET Learner is used to make recommendations
             // You can find its source code here:
-            // https://github.com/dotnet/infer/tree/master/src/Learners/Recommender
+            // https://github.com/dotnet/infer/tree/main/src/Learners/Recommender
             // This recommender has a model that matches the one described in the book.
             // Its source code is situated here:
-            // https://github.com/dotnet/infer/blob/master/src/Learners/RecommenderModels/Models.cs
+            // https://github.com/dotnet/infer/blob/main/src/Learners/RecommenderModels/Models.cs
             var recommender = MatchboxRecommender.Create(dataMapping);
 
             if (traitCount == 0)
